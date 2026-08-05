@@ -13,8 +13,8 @@ if (typeof window !== "undefined" && !window.storage) {
 }
 
 /* ============================================================
-   17-0 WAR ROOM
-   Draft assistant for perthirtysix.com/nfl/17-0 (Quick Play)
+   WAR ROOM
+   Draft assistant (Quick Play)
 
    Ratings are ESTIMATES modeled on the game's stated method
    (era-adjusted Approximate Value, peak-weighted). They are not
@@ -308,11 +308,11 @@ export default function WarRoom() {
   useEffect(() => {
     (async () => {
       try {
-        const a = await window.storage.get("p36:actuals");
+        const a = await window.storage.get("wr:actuals");
         if (a?.value) setActuals(JSON.parse(a.value));
       } catch (e) { /* first run */ }
       try {
-        const x = await window.storage.get("p36:extras");
+        const x = await window.storage.get("wr:extras");
         if (x?.value) setExtras(JSON.parse(x.value));
       } catch (e) { /* first run */ }
     })();
@@ -556,7 +556,7 @@ export default function WarRoom() {
     return (
       <div className="wr">
         <style>{css}</style>
-        <div className="eyebrow">PerThirtySix · 17-0 · Quick Play</div>
+        <div className="eyebrow">War Room · Quick Play</div>
         <h1 className="disp" style={{ fontSize: 46, margin: "6px 0 4px" }}>War Room</h1>
         <p style={{ color: "#7C8794", fontSize: 14, maxWidth: 460, marginTop: 0 }}>
           Tells you which slot to spend each team on — not just who the best name is.
@@ -615,7 +615,7 @@ export default function WarRoom() {
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
         <div>
-          <div className="eyebrow">{TEAMS[franchise].name} · 17-0</div>
+          <div className="eyebrow">{TEAMS[franchise].name}</div>
           <h1 className="disp" style={{ fontSize: 32, margin: "2px 0 0" }}>War Room</h1>
         </div>
         <div style={{ textAlign: "right" }}>
@@ -730,10 +730,10 @@ export default function WarRoom() {
                   if (!inDb) {
                     const nx = [...extras.filter(x => !(x.team === currentTeam && x.name === name)),
                       { team: currentTeam, pool: draftForm.pool, name, start, end, rating }];
-                    setExtras(nx); persist("p36:extras", nx);
+                    setExtras(nx); persist("wr:extras", nx);
                   }
                   const na = { ...actuals, [pkey(currentTeam, name)]: rating };
-                  setActuals(na); persist("p36:actuals", na);
+                  setActuals(na); persist("wr:actuals", na);
                   setDraftForm({ pool: draftForm.pool, name: "", start: "", end: "", rating: "" });
                 }}>
                 Save rating
@@ -898,7 +898,7 @@ export default function WarRoom() {
                   if (raw === "") delete next[pkey(f.team, f.name)];
                   else if (!isNaN(Number(raw))) next[pkey(f.team, f.name)] = Number(raw);
                   else return;
-                  setActuals(next); persist("p36:actuals", next);
+                  setActuals(next); persist("wr:actuals", next);
                 }} />
             </div>
           </div>
