@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import logo from "./assets/logo-horizontal.svg";
 
 if (typeof window !== "undefined" && !window.storage) {
@@ -424,6 +424,63 @@ export default function WarRoom() {
 
   const showInstallBanner = !isStandalone && !installDismissed && (installEvent || isIOSSafari);
 
+  // --- pull-to-refresh — clears the SW/cache storage and reloads fresh ------
+  const PULL_THRESHOLD = 70;
+  const PULL_MAX = 110;
+  const [pullY, setPullY] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
+  const pullStartY = useRef(null);
+  const pullYRef = useRef(0);
+  const pullActive = useRef(false);
+  const pullCommitted = useRef(false);
+  const startedRef = useRef(started);
+  useEffect(() => { startedRef.current = started; }, [started]);
+
+  useEffect(() => {
+    function setPull(v) { pullYRef.current = v; setPullY(v); }
+    function onTouchStart(e) {
+      if (pullCommitted.current || window.scrollY > 0) return;
+      pullStartY.current = e.touches[0].clientY;
+      pullActive.current = true;
+    }
+    function onTouchMove(e) {
+      if (!pullActive.current || pullStartY.current == null) return;
+      if (window.scrollY > 0) { pullActive.current = false; setPull(0); return; }
+      const dy = e.touches[0].clientY - pullStartY.current;
+      if (dy <= 0) { setPull(0); return; }
+      e.preventDefault();
+      setPull(Math.min(dy * 0.5, PULL_MAX));
+    }
+    async function onTouchEnd() {
+      if (!pullActive.current) return;
+      pullActive.current = false;
+      pullStartY.current = null;
+      if (pullYRef.current < PULL_THRESHOLD) { setPull(0); return; }
+      setPull(PULL_THRESHOLD);
+      if (startedRef.current && !window.confirm("Refresh now? This clears your current progress.")) {
+        setPull(0);
+        return;
+      }
+      pullCommitted.current = true;
+      setRefreshing(true);
+      forceRefresh();
+    }
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onTouchEnd);
+    window.addEventListener("touchcancel", onTouchEnd);
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, []);
+
+  const pullWrapStyle = (pullY > 0 || refreshing)
+    ? { transform: `translateY(${refreshing ? PULL_THRESHOLD : pullY}px)`, transition: pullActive.current ? "none" : "transform .25s" }
+    : undefined;
+
   useEffect(() => {
     if (!pickerOpen && !dealtPickerOpen) return;
     const onKey = e => {
@@ -450,6 +507,18 @@ export default function WarRoom() {
 
   async function persist(key, val) {
     try { await window.storage.set(key, JSON.stringify(val)); } catch (e) { /* offline ok */ }
+  }
+
+  async function forceRefresh() {
+    try {
+      const regs = await navigator.serviceWorker?.getRegistrations?.();
+      await Promise.all((regs || []).map(r => r.unregister()));
+    } catch (e) { /* no SW support */ }
+    try {
+      const keys = await caches?.keys?.();
+      await Promise.all((keys || []).map(k => caches.delete(k)));
+    } catch (e) { /* no Cache Storage support */ }
+    window.location.reload();
   }
 
   const pkey = (team, name) => `${team}|${name}`;
@@ -733,6 +802,9 @@ export default function WarRoom() {
 .installbar .close{ background:none; border:none; color:#859993; cursor:pointer; font-size:17px;
   line-height:1; padding:4px; flex-shrink:0; }
 .installbar .close:hover{ color:#F4F1E8; }
+.pullbar{ position:fixed; top:0; left:0; right:0; height:70px; z-index:60;
+  display:flex; align-items:flex-end; justify-content:center; padding-bottom:10px;
+  color:#859993; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
 .exportbox{ width:100%; height:240px; background:#1B2620; color:#F4F1E8; border:1px solid #47665D;
   border-radius:3px; padding:10px; font-family:'IBM Plex Mono',monospace; font-size:12px;
   line-height:1.5; resize:vertical; }
@@ -745,7 +817,11 @@ export default function WarRoom() {
   /* ---------------- setup ---------------- */
   if (!started) {
     return (
-      <div className="wr">
+      <>
+        <div className="pullbar" style={{ transform: `translateY(${Math.min(pullY, PULL_THRESHOLD) - PULL_THRESHOLD}px)` }}>
+          <span className="mono">{refreshing ? "Refreshing…" : pullY >= PULL_THRESHOLD ? "Release to refresh" : "Pull to refresh"}</span>
+        </div>
+        <div className="wr" style={pullWrapStyle}>
         <style>{css}</style>
         <div className="eyebrow">Quick Play</div>
         <img src={logo} alt="War Room" style={{ width: 383, maxWidth: "100%", height: "auto", display: "block", margin: "14px 0 28px" }} />
@@ -828,13 +904,18 @@ export default function WarRoom() {
           Ratings are estimates modeled on era-adjusted Approximate Value, not the game's
           real numbers. Log your actual results and they can be corrected.
         </p>
-      </div>
+        </div>
+      </>
     );
   }
 
   /* ---------------- main ---------------- */
   return (
-    <div className="wr">
+    <>
+      <div className="pullbar" style={{ transform: `translateY(${Math.min(pullY, PULL_THRESHOLD) - PULL_THRESHOLD}px)` }}>
+        <span className="mono">{refreshing ? "Refreshing…" : pullY >= PULL_THRESHOLD ? "Release to refresh" : "Pull to refresh"}</span>
+      </div>
+      <div className="wr" style={pullWrapStyle}>
       <style>{css}</style>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
@@ -1215,6 +1296,7 @@ export default function WarRoom() {
           style={{ opacity: usedTeams.length ? 1 : .35 }}>Undo pick</button>
         <button className="btn ghost" onClick={reset}>New board</button>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
