@@ -345,7 +345,7 @@ function TeamPicker({ title, exclude = [], selected, onPick, onClose }) {
                           aria-pressed={selected === t}
                         >
                           <div className="disp" style={{ fontSize: 16 }}>{t.toUpperCase()}</div>
-                          <div className="mono" style={{ fontSize: 8, opacity: .8, marginTop: 1 }}>{TEAMS[t].name}</div>
+                          <div className="mono" style={{ fontSize: 10, opacity: .8, marginTop: 1 }}>{TEAMS[t].name}</div>
                           <span className="accent" style={{ background: TEAMS[t].color2 }} />
                         </button>
                       );
