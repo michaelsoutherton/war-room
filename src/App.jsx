@@ -441,7 +441,7 @@ export default function WarRoom() {
     const known = Number(actuals[pkey(team, name)]);
     if (!isNaN(known)) return { rating: known, known: true };
     const v = calib.fitted ? calib.a * est + calib.b : est;
-    return { rating: Math.max(1, Math.round(v * 10) / 10), known: false };
+    return { rating: Math.min(100, Math.max(1, Math.round(v * 10) / 10)), known: false };
   }
 
   function getPool(teamKey, pool) {
