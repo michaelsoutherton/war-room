@@ -642,7 +642,9 @@ export default function WarRoom() {
   const css = `
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
 .wr{ background:#26332F; min-height:100vh; color:#F4F1E8;
-  font-family:'IBM Plex Sans',system-ui,sans-serif; padding:20px 18px 44px; }
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  padding:calc(20px + env(safe-area-inset-top)) calc(18px + env(safe-area-inset-right))
+    calc(44px + env(safe-area-inset-bottom)) calc(18px + env(safe-area-inset-left)); }
 .wr *{ box-sizing:border-box; }
 .disp{ font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-weight:800;
   text-transform:uppercase; letter-spacing:.04em; line-height:.95; }
