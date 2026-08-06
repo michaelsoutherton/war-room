@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
+import logo from "./assets/logo-horizontal.svg";
 
 if (typeof window !== "undefined" && !window.storage) {
   window.storage = {
@@ -267,6 +268,25 @@ const ERAS = {
 };
 const ERA_KEYS = ["classic", "bridge", "modern"];
 
+const DIVISIONS = [
+  { label: "AFC North", teams: ["bal", "cin", "cle", "pit"] },
+  { label: "AFC East",  teams: ["buf", "mia", "ne", "nyj"] },
+  { label: "AFC South", teams: ["hou", "ind", "jax", "ten"] },
+  { label: "AFC West",  teams: ["den", "kc", "lac", "lv"] },
+  { label: "NFC North", teams: ["chi", "det", "gb", "min"] },
+  { label: "NFC East",  teams: ["dal", "nyg", "phi", "was"] },
+  { label: "NFC South", teams: ["atl", "car", "no", "tb"] },
+  { label: "NFC West",  teams: ["ari", "lar", "sea", "sf"] },
+];
+
+// Picks black or white badge text for readable contrast against a team color.
+function contrastText(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return luminance > 0.6 ? "#26332F" : "#F4F1E8";
+}
+
 // A player counts for an era if at least 2 seasons of his tenure fall inside it
 // (or if his whole short tenure sits inside it).
 function erasFor(start, end) {
@@ -290,20 +310,83 @@ function bestPlayer(teamKey, pool, era) {
   return list.reduce((a, b) => (b.rating > a.rating ? b : a));
 }
 
+// The team-grid modal, shared by the round-1 franchise picker and the
+// "which team were you dealt?" picker used every round after.
+function TeamPicker({ title, exclude = [], selected, onPick, onClose }) {
+  return (
+    <div className="modalback" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <div className="modalhead">
+          <div className="eyebrow">{title}</div>
+          <button type="button" className="modalclose" onClick={onClose} aria-label="Close">✕</button>
+        </div>
+        <div className="confgrid">
+          {["AFC", "NFC"].map(conf => (
+            <div key={conf} className="confcol">
+              <div className="disp" style={{ fontSize: 16, marginBottom: 8, color: conf === "AFC" ? "#C8342B" : "#5C8DEF" }}>
+                {conf}
+              </div>
+              {DIVISIONS.filter(div => div.label.startsWith(conf)).map(div => (
+                <div key={div.label} style={{ marginBottom: 10 }}>
+                  <div className="mono" style={{ fontSize: 9, color: "#859993", letterSpacing: ".08em", marginBottom: 4 }}>
+                    {div.label.slice(conf.length + 1)}
+                  </div>
+                  <div className="teamgrid">
+                    {div.teams.map(t => {
+                      const disabled = exclude.includes(t);
+                      return (
+                        <button
+                          key={t}
+                          type="button"
+                          disabled={disabled}
+                          className={`teambadge${selected === t ? " active" : ""}`}
+                          style={{ background: TEAMS[t].color, color: contrastText(TEAMS[t].color) }}
+                          onClick={() => onPick(t)}
+                          aria-pressed={selected === t}
+                        >
+                          <div className="disp" style={{ fontSize: 15 }}>{t.toUpperCase()}</div>
+                          <div className="mono" style={{ fontSize: 7, opacity: .8, marginTop: 1 }}>{TEAMS[t].name}</div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function WarRoom() {
   const [franchise, setFranchise] = useState("");
+  const [pickerOpen, setPickerOpen] = useState(false);
   const [started, setStarted] = useState(false);
   const [board, setBoard] = useState({});        // slotId -> {name, team, rating, era}
   const [usedTeams, setUsedTeams] = useState([]);
   const [currentTeam, setCurrentTeam] = useState("");
   const [eraSlots, setEraSlots] = useState({});   // eraKey -> slotId (set once per board)
   const [editingLocks, setEditingLocks] = useState(false);
+  const [dealtPickerOpen, setDealtPickerOpen] = useState(false);
 
   // --- learned data, persisted across boards -------------------------------
   const [actuals, setActuals] = useState({});     // "team|Name" -> rating the game showed
   const [extras, setExtras] = useState([]);       // players missing from the database
   const [showAdd, setShowAdd] = useState(false);
   const [draftForm, setDraftForm] = useState({ pool: "QB", name: "", start: "", end: "" });
+
+  useEffect(() => {
+    if (!pickerOpen && !dealtPickerOpen) return;
+    const onKey = e => {
+      if (e.key !== "Escape") return;
+      setPickerOpen(false);
+      setDealtPickerOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [pickerOpen, dealtPickerOpen]);
 
   useEffect(() => {
     (async () => {
@@ -329,12 +412,14 @@ export default function WarRoom() {
   const calib = useMemo(() => {
     const pts = [];
     for (const key of Object.keys(actuals)) {
+      const act = Number(actuals[key]);
+      if (isNaN(act)) continue;
       const [team, name] = key.split("|");
       const t = TEAMS[team];
       if (!t) continue;
       for (const poolName of Object.keys(t.p)) {
         const hit = t.p[poolName].find(r => r[0] === name);
-        if (hit) pts.push({ est: hit[3], act: actuals[key], pool: poolName });
+        if (hit) pts.push({ est: hit[3], act, pool: poolName });
       }
     }
     const n = pts.length;
@@ -353,8 +438,8 @@ export default function WarRoom() {
 
   // A known rating always wins; otherwise fall back to the corrected estimate.
   function adjust(team, name, est) {
-    const known = actuals[pkey(team, name)];
-    if (typeof known === "number") return { rating: known, known: true };
+    const known = Number(actuals[pkey(team, name)]);
+    if (!isNaN(known)) return { rating: known, known: true };
     const v = calib.fitted ? calib.a * est + calib.b : est;
     return { rating: Math.max(1, Math.round(v * 10) / 10), known: false };
   }
@@ -477,6 +562,8 @@ export default function WarRoom() {
     }}));
     setUsedTeams(prev => [...prev, currentTeam]);
     setCurrentTeam("");
+    // more picks left after this one — prompt for the next dealt team
+    if (openSlots.length > 1) setDealtPickerOpen(true);
   }
 
   function reset() {
@@ -495,32 +582,32 @@ export default function WarRoom() {
 
   const css = `
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
-.wr{ background:#12161C; min-height:100vh; color:#EDE7DA;
+.wr{ background:#26332F; min-height:100vh; color:#F4F1E8;
   font-family:'IBM Plex Sans',system-ui,sans-serif; padding:14px 12px 40px; }
 .wr *{ box-sizing:border-box; }
 .disp{ font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-weight:800;
   text-transform:uppercase; letter-spacing:.04em; line-height:.95; }
 .mono{ font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums; }
 .eyebrow{ font-family:'Barlow Condensed',sans-serif; font-weight:600; text-transform:uppercase;
-  letter-spacing:.18em; font-size:11px; color:#7C8794; }
-.panel{ background:#1B222B; border:1px solid #28323E; border-radius:4px; padding:14px; margin-bottom:12px; }
+  letter-spacing:.18em; font-size:11px; color:#859993; }
+.panel{ background:#30453F; border:1px solid #47665D; border-radius:4px; padding:14px; margin-bottom:12px; }
 .slotgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
-.slotbtn{ background:#12161C; border:1px solid #2C3742; border-radius:3px; padding:8px 4px;
-  cursor:pointer; text-align:center; color:#EDE7DA; position:relative; overflow:hidden;
+.slotbtn{ background:#26332F; border:1px solid #47665D; border-radius:3px; padding:8px 4px;
+  cursor:pointer; text-align:center; color:#F4F1E8; position:relative; overflow:hidden;
   transition:border-color .15s, transform .1s; }
-.slotbtn:hover{ border-color:#4A5765; }
+.slotbtn:hover{ border-color:#5C8479; }
 .slotbtn:active{ transform:scale(.97); }
-.slotbtn:focus-visible{ outline:2px solid #EDE7DA; outline-offset:2px; }
+.slotbtn:focus-visible{ outline:2px solid #F4F1E8; outline-offset:2px; }
 .slotbtn.done{ opacity:.32; cursor:default; }
 .slotbtn.static{ cursor:default; }
-.slotbtn.static:hover{ border-color:#2C3742; }
-.linkbtn{ background:none; border:none; color:#7C8794; cursor:pointer; padding:2px 4px;
+.slotbtn.static:hover{ border-color:#47665D; }
+.linkbtn{ background:none; border:none; color:#859993; cursor:pointer; padding:2px 4px;
   font-family:'Barlow Condensed',sans-serif; font-weight:600; text-transform:uppercase;
   letter-spacing:.14em; font-size:11px; }
-.linkbtn:hover{ color:#EDE7DA; }
-.linkbtn:focus-visible{ outline:2px solid #EDE7DA; outline-offset:2px; }
+.linkbtn:hover{ color:#F4F1E8; }
+.linkbtn:focus-visible{ outline:2px solid #F4F1E8; outline-offset:2px; }
 .actual{ width:52px; margin-top:3px; background:#fff; border:1px solid #C3BBA8; border-radius:2px;
-  padding:3px 5px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#12161C;
+  padding:3px 5px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#26332F;
   text-align:right; }
 .actual::placeholder{ color:#A9A091; font-size:10px; letter-spacing:.06em; }
 .actual:focus{ outline:2px solid #C8342B; outline-offset:1px; }
@@ -528,25 +615,54 @@ export default function WarRoom() {
 .slotname{ font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:15px;
   text-transform:uppercase; letter-spacing:.03em; }
 .slotera{ font-size:9px; letter-spacing:.1em; text-transform:uppercase; margin-top:2px; }
-.magnet{ background:#EDE7DA; color:#12161C; border-radius:2px; padding:10px 12px;
+.magnet{ background:#F4F1E8; color:#26332F; border-radius:2px; padding:10px 12px;
   display:flex; align-items:center; gap:10px; margin-bottom:6px; position:relative; }
 .magnet .bar{ position:absolute; left:0; top:0; bottom:0; width:5px; }
-.pickcard{ background:#EDE7DA; color:#12161C; border-radius:3px; padding:14px 14px 12px 18px;
+.pickcard{ background:#F4F1E8; color:#26332F; border-radius:3px; padding:14px 14px 12px 18px;
   position:relative; box-shadow:0 6px 0 rgba(0,0,0,.28); }
 .pickcard .bar{ position:absolute; left:0; top:0; bottom:0; width:6px; }
-.alt{ display:flex; align-items:center; gap:10px; padding:9px 10px; border-bottom:1px solid #262F3A;
+.alt{ display:flex; align-items:center; gap:10px; padding:9px 10px; border-bottom:1px solid #47665D;
   cursor:pointer; }
-.alt:hover{ background:#212A34; }
-.sel{ width:100%; background:#12161C; color:#EDE7DA; border:1px solid #2C3742; border-radius:3px;
+.alt:hover{ background:#3B544D; }
+.sel{ width:100%; background:#26332F; color:#F4F1E8; border:1px solid #47665D; border-radius:3px;
   padding:10px; font-family:'IBM Plex Sans',sans-serif; font-size:15px; }
 .btn{ font-family:'Barlow Condensed',sans-serif; font-weight:800; text-transform:uppercase;
   letter-spacing:.08em; font-size:15px; background:#C8342B; color:#fff; border:none;
   border-radius:3px; padding:12px 18px; cursor:pointer; width:100%; }
 .btn:active{ transform:translateY(1px); }
-.btn.ghost{ background:transparent; color:#7C8794; border:1px solid #2C3742; }
+.btn.ghost{ background:transparent; color:#859993; border:1px solid #47665D; }
 .tag{ font-size:9px; letter-spacing:.12em; text-transform:uppercase; padding:2px 5px;
   border-radius:2px; font-weight:600; }
-.rule{ height:1px; background:#28323E; margin:12px 0; }
+.rule{ height:1px; background:#47665D; margin:12px 0; }
+.confgrid{ display:grid; grid-template-columns:1fr 1fr; gap:0 14px; }
+.confcol{ min-width:0; }
+.teamgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
+.teambadge{ border:2px solid transparent; border-radius:4px; padding:8px 4px; cursor:pointer;
+  text-align:center; line-height:1.1; transition:transform .1s, border-color .15s; }
+.teambadge:hover{ border-color:#F4F1E8; }
+.teambadge:active{ transform:scale(.96); }
+.teambadge:focus-visible{ outline:2px solid #F4F1E8; outline-offset:2px; }
+.teambadge.active{ border-color:#C8342B; }
+.teambadge:disabled{ opacity:.28; cursor:not-allowed; }
+.teambadge:disabled:hover{ border-color:transparent; }
+.pickerbtn{ width:100%; background:#26332F; color:#F4F1E8; border:1px solid #47665D; border-radius:3px;
+  padding:10px; font-family:'IBM Plex Sans',sans-serif; font-size:15px; text-align:left;
+  cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.pickerbtn:hover{ border-color:#5C8479; }
+.pickerbtn:focus-visible{ outline:2px solid #F4F1E8; outline-offset:2px; }
+.pickerbtn .chev{ color:#859993; font-size:11px; }
+.pickerbtn .swatch{ width:14px; height:14px; border-radius:2px; flex-shrink:0; }
+.pickerbtn .placeholder{ color:#859993; }
+.modalback{ position:fixed; inset:0; background:rgba(16,24,22,.72); z-index:50;
+  display:flex; align-items:flex-end; justify-content:center; }
+.modal{ background:#26332F; width:100%; max-width:520px; max-height:88vh; overflow-y:auto;
+  border-radius:10px 10px 0 0; padding:16px 14px calc(16px + env(safe-area-inset-bottom)); }
+.modalhead{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;
+  position:sticky; top:-16px; background:#26332F; padding-top:2px; }
+.modalclose{ background:#30453F; border:1px solid #47665D; color:#F4F1E8; border-radius:50%;
+  width:30px; height:30px; font-size:16px; line-height:1; cursor:pointer; }
+.modalclose:hover{ border-color:#5C8479; }
+@media (min-width:600px){ .modalback{ align-items:center; } .modal{ border-radius:10px; } }
 @media (max-width:380px){ .slotgrid{ grid-template-columns:repeat(2,1fr); } }
 @media (prefers-reduced-motion:reduce){ .slotbtn{ transition:none; } }
 `;
@@ -556,21 +672,34 @@ export default function WarRoom() {
     return (
       <div className="wr">
         <style>{css}</style>
-        <div className="eyebrow">War Room · Quick Play</div>
-        <h1 className="disp" style={{ fontSize: 46, margin: "6px 0 4px" }}>War Room</h1>
-        <p style={{ color: "#7C8794", fontSize: 14, maxWidth: 460, marginTop: 0 }}>
-          Tells you which slot to spend each team on — not just who the best name is.
-        </p>
+        <div className="eyebrow">Quick Play</div>
+        <img src={logo} alt="War Room" style={{ height: 84, display: "block", margin: "14px 0 28px" }} />
         <div className="panel">
           <div className="eyebrow" style={{ marginBottom: 8 }}>Round 1 · your franchise</div>
-          <select className="sel" value={franchise} onChange={e => setFranchise(e.target.value)}>
-            <option value="">Choose the team you're playing as</option>
-            {allTeams.map(t => <option key={t} value={t}>{TEAMS[t].name}</option>)}
-          </select>
+          <button type="button" className="pickerbtn" onClick={() => setPickerOpen(true)}>
+            {franchise ? (
+              <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span className="swatch" style={{ background: TEAMS[franchise].color }} />
+                {TEAMS[franchise].name}
+              </span>
+            ) : (
+              <span className="placeholder">Choose the team you're playing as</span>
+            )}
+            <span className="chev">▾</span>
+          </button>
+
+          {pickerOpen && (
+            <TeamPicker
+              title="Choose your franchise"
+              selected={franchise}
+              onPick={t => { setFranchise(t); setPickerOpen(false); }}
+              onClose={() => setPickerOpen(false)}
+            />
+          )}
 
           <div className="rule" />
           <div className="eyebrow" style={{ marginBottom: 2 }}>Era locks · fixed for the board</div>
-          <div style={{ fontSize: 12, color: "#7C8794", marginBottom: 10 }}>
+          <div style={{ fontSize: 12, color: "#859993", marginBottom: 10 }}>
             Which slot did each era land on?
           </div>
           {ERA_KEYS.map(k => (
@@ -578,7 +707,7 @@ export default function WarRoom() {
               <div style={{ width: 5, height: 38, background: ERAS[k].color, flexShrink: 0 }} />
               <div style={{ width: 84, flexShrink: 0 }}>
                 <div className="slotname" style={{ fontSize: 14 }}>{ERAS[k].label}</div>
-                <div className="mono" style={{ fontSize: 10, color: "#6B7681" }}>{ERAS[k].sub}</div>
+                <div className="mono" style={{ fontSize: 10, color: "#859993" }}>{ERAS[k].sub}</div>
               </div>
               <select className="sel" style={{ flex: 1, padding: 8 }}
                 value={eraSlots[k] || ""} onChange={e => setEraSlot(k, e.target.value)}>
@@ -600,7 +729,7 @@ export default function WarRoom() {
             </div>
           )}
         </div>
-        <p className="mono" style={{ fontSize: 11, color: "#5C6773", lineHeight: 1.6 }}>
+        <p className="mono" style={{ fontSize: 11, color: "#859993", lineHeight: 1.6 }}>
           Ratings are estimates modeled on era-adjusted Approximate Value, not the game's
           real numbers. Log your actual results and they can be corrected.
         </p>
@@ -616,11 +745,11 @@ export default function WarRoom() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
         <div>
           <div className="eyebrow">{TEAMS[franchise].name}</div>
-          <h1 className="disp" style={{ fontSize: 32, margin: "2px 0 0" }}>War Room</h1>
+          <img src={logo} alt="War Room" style={{ height: 40, display: "block", margin: "4px 0 0" }} />
         </div>
         <div style={{ textAlign: "right" }}>
           <div className="eyebrow">Round</div>
-          <div className="disp mono" style={{ fontSize: 30 }}>{Math.min(round, 8)}<span style={{ color: "#5C6773", fontSize: 18 }}>/8</span></div>
+          <div className="disp mono" style={{ fontSize: 30 }}>{Math.min(round, 8)}<span style={{ color: "#859993", fontSize: 18 }}>/8</span></div>
         </div>
       </div>
 
@@ -628,16 +757,33 @@ export default function WarRoom() {
 
       {/* on the clock */}
       {openSlots.length > 0 && (
-        <div className="panel" style={{ borderColor: currentTeam ? "#C8342B" : "#28323E" }}>
+        <div className="panel" style={{ borderColor: currentTeam ? "#C8342B" : "#47665D" }}>
           <div className="eyebrow" style={{ color: "#C8342B", marginBottom: 8 }}>On the clock</div>
           {round === 1 ? (
             <div className="disp" style={{ fontSize: 26, marginBottom: 10 }}>{TEAMS[franchise].name}</div>
           ) : (
-            <select className="sel" value={currentTeam} onChange={e => setCurrentTeam(e.target.value)}>
-              <option value="">Which team were you dealt?</option>
-              {allTeams.filter(t => !usedTeams.includes(t)).map(t =>
-                <option key={t} value={t}>{TEAMS[t].name}</option>)}
-            </select>
+            <>
+              <button type="button" className="pickerbtn" onClick={() => setDealtPickerOpen(true)}>
+                {currentTeam ? (
+                  <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span className="swatch" style={{ background: TEAMS[currentTeam].color }} />
+                    {TEAMS[currentTeam].name}
+                  </span>
+                ) : (
+                  <span className="placeholder">Which team were you dealt?</span>
+                )}
+                <span className="chev">▾</span>
+              </button>
+              {dealtPickerOpen && (
+                <TeamPicker
+                  title="Which team were you dealt?"
+                  exclude={usedTeams}
+                  selected={currentTeam}
+                  onPick={t => { setCurrentTeam(t); setDealtPickerOpen(false); }}
+                  onClose={() => setDealtPickerOpen(false)}
+                />
+              )}
+            </>
           )}
 
           <div style={{ height: 12 }} />
@@ -672,7 +818,7 @@ export default function WarRoom() {
                   <div key={s.id} className={"slotbtn static" + (filled ? " done" : "")}>
                     {lock && <span className="lk" style={{ background: ERAS[lock].color }} />}
                     <div className="slotname">{s.label}</div>
-                    <div className="slotera" style={{ color: lock ? ERAS[lock].color : "#4A5765" }}>
+                    <div className="slotera" style={{ color: lock ? ERAS[lock].color : "#5C8479" }}>
                       {lock ? ERAS[lock].sub : "any era"}
                     </div>
                     {scarce && (
@@ -699,7 +845,7 @@ export default function WarRoom() {
           </div>
           {showAdd && (
             <>
-              <div style={{ fontSize: 12, color: "#7C8794", margin: "6px 0 10px", lineHeight: 1.5 }}>
+              <div style={{ fontSize: 12, color: "#859993", margin: "6px 0 10px", lineHeight: 1.5 }}>
                 Anyone the game showed you for {TEAMS[currentTeam].name} — scouted names count too.
               </div>
               <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
@@ -753,27 +899,27 @@ export default function WarRoom() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div>
                   <div className="disp" style={{ fontSize: 27 }}>{top.player.name}</div>
-                  <div className="mono" style={{ fontSize: 12, color: "#5C6773", marginTop: 3 }}>
+                  <div className="mono" style={{ fontSize: 12, color: "#859993", marginTop: 3 }}>
                     {TEAMS[currentTeam].name} · {top.player.start}–{top.player.end}
                   </div>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0, marginLeft: 10 }}>
                   <div className="disp" style={{ fontSize: 34, lineHeight: 1 }}>{top.player.rating}</div>
-                  <div className="eyebrow" style={{ color: top.player.known ? "#2F6B57" : "#8A7A5E" }}>
+                  <div className="eyebrow" style={{ color: top.player.known ? "#3EAD88" : "#B7A482" }}>
                     {top.player.known ? "confirmed" : "est."}
                   </div>
                 </div>
               </div>
               <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
-                <span className="tag" style={{ background: "#12161C", color: "#EDE7DA" }}>
+                <span className="tag" style={{ background: "#26332F", color: "#F4F1E8" }}>
                   slot · {top.slot.label}
                 </span>
                 {top.era && (
-                  <span className="tag" style={{ background: ERAS[top.era].color, color: "#12161C" }}>
+                  <span className="tag" style={{ background: ERAS[top.era].color, color: "#26332F" }}>
                     {ERAS[top.era].label}
                   </span>
                 )}
-                <span className="tag" style={{ background: "#DCD3C0", color: "#3A4551" }}>
+                <span className="tag" style={{ background: "#DCD3C0", color: "#26332F" }}>
                   {top.raw >= 0 ? "+" : ""}{top.raw.toFixed(1)} vs. a later team
                 </span>
                 {top.risk > 6 && (
@@ -782,7 +928,7 @@ export default function WarRoom() {
                   </span>
                 )}
               </div>
-              <p style={{ fontSize: 13, lineHeight: 1.5, color: "#3A4551", margin: "10px 0 12px" }}>
+              <p style={{ fontSize: 13, lineHeight: 1.5, color: "#26332F", margin: "10px 0 12px" }}>
                 {top.risk > 6
                   ? (top.era
                       ? `${top.slot.label} is locked to ${ERAS[top.era].label} and only ${outlook[top.slot.id].count} of the ${remainingTeams.length} teams left can fill it. Take it now or risk being stuck.`
@@ -803,23 +949,23 @@ export default function WarRoom() {
             <div className="panel" style={{ padding: "2px 0" }}>
               {bestBySlot.slice(1).map(o => (
                 <div key={o.slot.id} className="alt" onClick={() => draft(o)}>
-                  <div style={{ width: 4, height: 30, background: o.era ? ERAS[o.era].color : "#3A4551", flexShrink: 0 }} />
+                  <div style={{ width: 4, height: 30, background: o.era ? ERAS[o.era].color : "#5C8479", flexShrink: 0 }} />
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div className="disp" style={{ fontSize: 17 }}>{o.player.name}</div>
-                    <div className="mono" style={{ fontSize: 11, color: "#7C8794" }}>
+                    <div className="mono" style={{ fontSize: 11, color: "#859993" }}>
                       {o.slot.label} · {o.player.start}–{o.player.end}
                     </div>
                   </div>
                   <div style={{ textAlign: "right" }}>
                     <div className="mono" style={{ fontSize: 17 }}>{o.player.rating}</div>
-                    <div className="mono" style={{ fontSize: 10, color: o.raw >= 0 ? "#4E9E9A" : "#8A5A52" }}>
+                    <div className="mono" style={{ fontSize: 10, color: o.raw >= 0 ? "#4E9E9A" : "#BA7E74" }}>
                       {o.raw >= 0 ? "+" : ""}{o.raw.toFixed(1)}
                     </div>
                   </div>
                 </div>
               ))}
               {bestBySlot.length <= 1 && (
-                <div style={{ padding: 14, color: "#7C8794", fontSize: 13 }}>
+                <div style={{ padding: 14, color: "#859993", fontSize: 13 }}>
                   Only one slot is legal for this team under the current locks.
                 </div>
               )}
@@ -831,10 +977,10 @@ export default function WarRoom() {
                 {endangered.map(x => (
                   <div key={x.slot.id} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                     <div style={{ width: 4, height: 26, flexShrink: 0,
-                      background: x.era ? ERAS[x.era].color : "#3A4551" }} />
+                      background: x.era ? ERAS[x.era].color : "#5C8479" }} />
                     <div className="slotname" style={{ fontSize: 14, flex: 1 }}>
                       {x.slot.label}
-                      {x.era && <span className="mono" style={{ fontSize: 10, color: "#7C8794", marginLeft: 6 }}>
+                      {x.era && <span className="mono" style={{ fontSize: 10, color: "#859993", marginLeft: 6 }}>
                         {ERAS[x.era].sub}</span>}
                     </div>
                     <div className="mono" style={{ fontSize: 13, color: x.count <= 2 ? "#C8342B" : "#C8912F" }}>
@@ -842,7 +988,7 @@ export default function WarRoom() {
                     </div>
                   </div>
                 ))}
-                <div style={{ fontSize: 12, color: "#7C8794", lineHeight: 1.5, marginTop: 6 }}>
+                <div style={{ fontSize: 12, color: "#859993", lineHeight: 1.5, marginTop: 6 }}>
                   Teams left that can legally fill these. Grab them the moment one comes up.
                 </div>
               </div>
@@ -851,7 +997,7 @@ export default function WarRoom() {
         ) : (
           <div className="panel">
             <div className="disp" style={{ fontSize: 18, marginBottom: 6 }}>Nothing legal here</div>
-            <div style={{ fontSize: 13, color: "#7C8794", lineHeight: 1.5 }}>
+            <div style={{ fontSize: 13, color: "#859993", lineHeight: 1.5 }}>
               No player in the database fits an open slot for {TEAMS[currentTeam].name} under these locks.
               If the game is still offering someone, take them and tell me the name — they're missing here.
             </div>
@@ -863,7 +1009,7 @@ export default function WarRoom() {
       <div style={{ height: 8 }} />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
         <div className="eyebrow">The board</div>
-        <div className="mono" style={{ fontSize: 12, color: "#7C8794" }}>
+        <div className="mono" style={{ fontSize: 12, color: "#859993" }}>
           projected {projected}
         </div>
       </div>
@@ -872,32 +1018,32 @@ export default function WarRoom() {
         const f = board[s.id];
         if (!f) return (
           <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 10,
-            padding: "9px 12px", border: "1px dashed #2C3742", borderRadius: 2, marginBottom: 6 }}>
-            <div className="slotname" style={{ color: "#4A5765", width: 74 }}>{s.label}</div>
-            <div className="mono" style={{ fontSize: 11, color: "#3A4551" }}>open</div>
+            padding: "9px 12px", border: "1px dashed #47665D", borderRadius: 2, marginBottom: 6 }}>
+            <div className="slotname" style={{ color: "#5C8479", width: 74 }}>{s.label}</div>
+            <div className="mono" style={{ fontSize: 11, color: "#859993" }}>open</div>
           </div>
         );
         return (
           <div key={s.id} className="magnet">
             <span className="bar" style={{ background: TEAMS[f.team].color }} />
-            <div className="slotname" style={{ width: 68, color: "#7A8493", flexShrink: 0 }}>{s.label}</div>
+            <div className="slotname" style={{ width: 68, color: "#859993", flexShrink: 0 }}>{s.label}</div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div className="disp" style={{ fontSize: 17 }}>{f.name}</div>
-              <div className="mono" style={{ fontSize: 10, color: "#6B7681" }}>
+              <div className="mono" style={{ fontSize: 10, color: "#859993" }}>
                 {TEAMS[f.team].name} · {f.years}
               </div>
             </div>
             <div style={{ textAlign: "right", flexShrink: 0 }}>
-              <div className="mono" style={{ fontSize: 15, color: "#6B7681" }}>{f.rating}</div>
+              <div className="mono" style={{ fontSize: 15, color: "#859993" }}>{f.rating}</div>
               <input className="actual" inputMode="decimal" placeholder="real"
                 aria-label={`Rating the game gave ${f.name}`}
                 value={actuals[pkey(f.team, f.name)] ?? ""}
                 onChange={e => {
                   const raw = e.target.value;
+                  if (raw !== "" && !/^-?\d*\.?\d*$/.test(raw)) return;
                   const next = { ...actuals };
                   if (raw === "") delete next[pkey(f.team, f.name)];
-                  else if (!isNaN(Number(raw))) next[pkey(f.team, f.name)] = Number(raw);
-                  else return;
+                  else next[pkey(f.team, f.name)] = raw;
                   setActuals(next); persist("wr:actuals", next);
                 }} />
             </div>
@@ -909,8 +1055,8 @@ export default function WarRoom() {
         <div className="eyebrow" style={{ marginBottom: 6 }}>Calibration</div>
         {calib.fitted ? (
           <>
-            <div style={{ fontSize: 13, color: "#B9C0C8", lineHeight: 1.55 }}>
-              Fitted on <strong style={{ color: "#EDE7DA" }}>{calib.n}</strong> real ratings.
+            <div style={{ fontSize: 13, color: "#B1BEBA", lineHeight: 1.55 }}>
+              Fitted on <strong style={{ color: "#F4F1E8" }}>{calib.n}</strong> real ratings.
               Estimates are being corrected by{" "}
               <span className="mono">×{calib.a.toFixed(2)} {calib.b >= 0 ? "+" : "−"} {Math.abs(calib.b).toFixed(1)}</span>.
             </div>
@@ -921,7 +1067,7 @@ export default function WarRoom() {
             </div>
           </>
         ) : (
-          <div style={{ fontSize: 13, color: "#7C8794", lineHeight: 1.55 }}>
+          <div style={{ fontSize: 13, color: "#859993", lineHeight: 1.55 }}>
             {calib.n} of 6 ratings logged. Type the number the game shows next to each pick;
             once there are six, every other estimate gets pulled toward their scale.
             Anything you've logged is used exactly as entered.
@@ -935,7 +1081,7 @@ export default function WarRoom() {
           <div className="disp" style={{ fontSize: 34, margin: "4px 0" }}>
             {Object.values(board).reduce((a, b) => a + b.rating, 0)}
           </div>
-          <div style={{ fontSize: 13, color: "#7C8794" }}>
+          <div style={{ fontSize: 13, color: "#859993" }}>
             Estimated roster strength. Tell me the score the game actually gave you and
             this scale can be recalibrated.
           </div>
