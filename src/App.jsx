@@ -212,7 +212,7 @@ const TEAMS = {
     WR: [["Lynn Swann",1974,1982,76],["John Stallworth",1974,1987,80],["Hines Ward",1998,2011,82],["Antonio Brown",2010,2018,97]],
     TE: [["Elbie Nickel",1947,1957,68],["Eric Green",1990,1994,64],["Heath Miller",2005,2015,74],["Pat Freiermuth",2021,2025,58]],
     F7: [["Ernie Stautner",1950,1963,84],["Joe Greene",1969,1981,96],["Jack Ham",1971,1982,90],["Jack Lambert",1974,1984,90],["Greg Lloyd",1988,1997,74],["James Harrison",2004,2017,80],["Cam Heyward",2011,2025,80],["T.J. Watt",2017,2025,88]],
-    DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,99.8],["Troy Polamalu",2003,2014,88],["Minkah Fitzpatrick",2019,2024,74]] } },
+    DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,99.8],["Troy Polamalu",2003,2014,97.8],["Minkah Fitzpatrick",2019,2024,74]] } },
   sea: { name: "Seahawks", color: "#002244", color2: "#69BE28", p: {
     QB: [["Dave Krieg",1980,1991,74],["Matt Hasselbeck",2001,2010,72],["Russell Wilson",2012,2021,88],["Geno Smith",2022,2024,66]],
     RB: [["Curt Warner",1983,1989,72],["Shaun Alexander",2000,2007,76],["Marshawn Lynch",2010,2019,80],["Kenneth Walker III",2022,2025,62]],
