@@ -11,8 +11,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: 'War Room',
-        short_name: 'War Room',
+        name: 'The War Room',
+        short_name: 'The War Room',
         description: 'Draft assistant for the NFL franchise-drafting game — tells you which slot to spend each team on, not just who the best name is.',
         theme_color: '#26332f',
         background_color: '#26332f',
