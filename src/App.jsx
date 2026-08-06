@@ -57,7 +57,7 @@ const TEAMS = {
     RB: [["DeAngelo Williams",2006,2014,72],["Jonathan Stewart",2008,2017,68],["Christian McCaffrey",2017,2022,82]],
     WR: [["Muhsin Muhammad",1996,2004,76],["Steve Smith Sr.",2001,2013,88],["D.J. Moore",2018,2022,72]],
     TE: [["Wesley Walls",1996,2002,74],["Greg Olsen",2011,2019,80]],
-    F7: [["Julius Peppers",2002,2009,90],["Kris Jenkins",2001,2007,76],["Luke Kuechly",2012,2019,86],["Thomas Davis",2005,2018,76]],
+    F7: [["Julius Peppers",2002,2009,95.2],["Kris Jenkins",2001,2007,76],["Luke Kuechly",2012,2019,86],["Thomas Davis",2005,2018,76]],
     DB: [["Mike Minter",1997,2006,70],["Chris Gamble",2004,2012,66],["Josh Norman",2012,2015,68],["Jaycee Horn",2021,2025,68]] } },
   chi: { name: "Bears", color: "#0B162A", color2: "#C83803", p: {
     QB: [["Sid Luckman",1939,1950,94],["Jim McMahon",1982,1988,70],["Justin Fields",2021,2023,62],["Caleb Williams",2024,2025,60]],
@@ -134,7 +134,7 @@ const TEAMS = {
     RB: [["Ed Podolak",1969,1977,66],["Priest Holmes",2001,2007,80],["Larry Johnson",2003,2009,72],["Jamaal Charles",2008,2016,80],["Isiah Pacheco",2022,2025,58]],
     WR: [["Otis Taylor",1965,1975,78],["Dwayne Bowe",2007,2014,68],["Tyreek Hill",2016,2021,94.6],["Rashee Rice",2023,2025,60]],
     TE: [["Fred Arbanas",1962,1970,70],["Tony Gonzalez",1997,2008,99.4],["Travis Kelce",2013,2025,92]],
-    F7: [["Buck Buchanan",1963,1975,86],["Bobby Bell",1963,1974,86],["Willie Lanier",1967,1977,86],["Derrick Thomas",1989,1999,90],["Neil Smith",1988,1996,78],["Chris Jones",2016,2025,84]],
+    F7: [["Buck Buchanan",1963,1975,86],["Bobby Bell",1963,1974,86],["Willie Lanier",1967,1977,86],["Derrick Thomas",1989,1999,90],["Neil Smith",1988,1996,78],["Chris Jones",2016,2025,92.9]],
     DB: [["Johnny Robinson",1960,1971,82],["Emmitt Thomas",1966,1978,80],["Eric Berry",2010,2018,74],["Trent McDuffie",2022,2025,68]] } },
   lac: { name: "Chargers", color: "#0080C6", color2: "#FFC20E", p: {
     QB: [["John Hadl",1962,1972,76],["Dan Fouts",1973,1987,90],["Philip Rivers",2004,2019,88],["Justin Herbert",2020,2025,82]],
@@ -212,7 +212,7 @@ const TEAMS = {
     WR: [["Lynn Swann",1974,1982,76],["John Stallworth",1974,1987,80],["Hines Ward",1998,2011,82],["Antonio Brown",2010,2018,97]],
     TE: [["Elbie Nickel",1947,1957,68],["Eric Green",1990,1994,64],["Heath Miller",2005,2015,74],["Pat Freiermuth",2021,2025,58]],
     F7: [["Ernie Stautner",1950,1963,84],["Joe Greene",1969,1981,96],["Jack Ham",1971,1982,90],["Jack Lambert",1974,1984,90],["Greg Lloyd",1988,1997,74],["James Harrison",2004,2017,80],["Cam Heyward",2011,2025,80],["T.J. Watt",2017,2025,88]],
-    DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,90],["Troy Polamalu",2003,2014,88],["Minkah Fitzpatrick",2019,2024,74]] } },
+    DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,99.8],["Troy Polamalu",2003,2014,88],["Minkah Fitzpatrick",2019,2024,74]] } },
   sea: { name: "Seahawks", color: "#002244", color2: "#69BE28", p: {
     QB: [["Dave Krieg",1980,1991,74],["Matt Hasselbeck",2001,2010,72],["Russell Wilson",2012,2021,88],["Geno Smith",2022,2024,66]],
     RB: [["Curt Warner",1983,1989,72],["Shaun Alexander",2000,2007,76],["Marshawn Lynch",2010,2019,80],["Kenneth Walker III",2022,2025,62]],
