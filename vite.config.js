@@ -10,6 +10,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
+      devOptions: { enabled: true, type: 'module' },
       manifest: {
         name: 'The War Room',
         short_name: 'The War Room',

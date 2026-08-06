@@ -24,224 +24,224 @@ if (typeof window !== "undefined" && !window.storage) {
 
 // [name, firstYearWithTeam, lastYearWithTeam, estimatedRating]
 const TEAMS = {
-  ari: { name: "Cardinals", color: "#97233F", p: {
+  ari: { name: "Cardinals", color: "#97233F", color2: "#000000", p: {
     QB: [["Jim Hart",1966,1983,72],["Kurt Warner",2005,2009,88],["Kyler Murray",2019,2025,75]],
     RB: [["Ottis Anderson",1979,1986,76],["Edgerrin James",2006,2008,70],["David Johnson",2015,2019,71]],
     WR: [["Roy Green",1979,1990,76],["Anquan Boldin",2003,2009,82],["Larry Fitzgerald",2004,2020,95]],
     TE: [["Jackie Smith",1963,1977,82],["Freddie Jones",2002,2004,56],["Zach Ertz",2021,2023,70]],
     F7: [["Eric Swann",1991,1999,72],["Simeon Rice",1996,2000,78],["Calais Campbell",2008,2016,89.3],["Chandler Jones",2016,2021,84]],
     DB: [["Larry Wilson",1960,1972,96.3],["Aeneas Williams",1991,2000,85],["Patrick Peterson",2011,2020,84],["Budda Baker",2017,2025,78]] } },
-  atl: { name: "Falcons", color: "#A71930", p: {
+  atl: { name: "Falcons", color: "#A71930", color2: "#000000", p: {
     QB: [["Steve Bartkowski",1975,1985,74],["Michael Vick",2001,2006,80],["Matt Ryan",2008,2021,89]],
     RB: [["Gerald Riggs",1982,1988,72],["Warrick Dunn",2002,2007,75],["Devonta Freeman",2014,2019,70],["Bijan Robinson",2023,2025,72]],
     WR: [["Andre Rison",1990,1994,74],["Roddy White",2005,2015,83],["Julio Jones",2011,2020,96.7],["Drake London",2022,2025,68]],
-    TE: [["Jim Mitchell",1969,1979,68],["Alge Crumpler",2001,2007,74],["Tony Gonzalez",2009,2013,85],["Kyle Pitts",2021,2025,62]],
+    TE: [["Jim Mitchell",1969,1979,68],["Alge Crumpler",2001,2007,74],["Tony Gonzalez",2009,2013,94.3],["Kyle Pitts",2021,2025,62]],
     F7: [["Claude Humphrey",1968,1978,88],["John Abraham",2006,2012,82],["Grady Jarrett",2015,2024,76]],
     DB: [["Rolland Lawrence",1973,1980,72],["Deion Sanders",1989,1993,90],["Ray Buchanan",1997,2003,74],["A.J. Terrell",2020,2025,68]] } },
-  bal: { name: "Ravens", color: "#241773", p: {
+  bal: { name: "Ravens", color: "#241773", color2: "#9E7C0C", p: {
     QB: [["Joe Flacco",2008,2018,78],["Lamar Jackson",2018,2025,92]],
     RB: [["Jamal Lewis",2000,2006,77],["Ray Rice",2008,2013,72],["Derrick Henry",2024,2025,80]],
     WR: [["Derrick Mason",2005,2010,72],["Anquan Boldin",2010,2012,72],["Zay Flowers",2023,2025,68]],
     TE: [["Todd Heap",2001,2010,76],["Dennis Pitta",2010,2016,60],["Mark Andrews",2018,2025,80]],
     F7: [["Ray Lewis",1996,2012,98.5],["Terrell Suggs",2003,2018,88],["Haloti Ngata",2006,2014,80],["Roquan Smith",2022,2025,76]],
     DB: [["Rod Woodson",1998,2001,78],["Ed Reed",2002,2012,99.3],["Marlon Humphrey",2017,2025,76]] } },
-  buf: { name: "Bills", color: "#00338D", p: {
+  buf: { name: "Bills", color: "#00338D", color2: "#C60C30", p: {
     QB: [["Jim Kelly",1986,1996,88],["Drew Bledsoe",2002,2004,68],["Josh Allen",2018,2025,92]],
     RB: [["O.J. Simpson",1969,1977,92],["Thurman Thomas",1988,1999,89],["LeSean McCoy",2015,2018,74],["James Cook",2022,2025,66]],
     WR: [["Andre Reed",1985,1999,86],["Eric Moulds",1996,2005,76],["Stefon Diggs",2020,2023,82]],
     TE: [["Pete Metzelaars",1985,1994,62],["Jay Riemersma",1997,2002,58],["Dawson Knox",2019,2025,60]],
     F7: [["Bruce Smith",1985,1999,99.4],["Cornelius Bennett",1987,1995,80],["Ed Oliver",2019,2025,68],["Von Miller",2022,2024,64]],
     DB: [["Butch Byrd",1964,1970,72],["Henry Jones",1991,2000,68],["Jairus Byrd",2009,2013,72],["Tre'Davious White",2017,2023,76]] } },
-  car: { name: "Panthers", color: "#0085CA", p: {
-    QB: [["Jake Delhomme",2003,2009,70],["Cam Newton",2011,2019,86],["Bryce Young",2023,2025,58]],
+  car: { name: "Panthers", color: "#0085CA", color2: "#000000", p: {
+    QB: [["Jake Delhomme",2003,2009,70],["Cam Newton",2011,2019,84.8],["Bryce Young",2023,2025,58]],
     RB: [["DeAngelo Williams",2006,2014,72],["Jonathan Stewart",2008,2017,68],["Christian McCaffrey",2017,2022,82]],
     WR: [["Muhsin Muhammad",1996,2004,76],["Steve Smith Sr.",2001,2013,88],["D.J. Moore",2018,2022,72]],
     TE: [["Wesley Walls",1996,2002,74],["Greg Olsen",2011,2019,80]],
     F7: [["Julius Peppers",2002,2009,90],["Kris Jenkins",2001,2007,76],["Luke Kuechly",2012,2019,86],["Thomas Davis",2005,2018,76]],
     DB: [["Mike Minter",1997,2006,70],["Chris Gamble",2004,2012,66],["Josh Norman",2012,2015,68],["Jaycee Horn",2021,2025,68]] } },
-  chi: { name: "Bears", color: "#0B162A", p: {
+  chi: { name: "Bears", color: "#0B162A", color2: "#C83803", p: {
     QB: [["Sid Luckman",1939,1950,94],["Jim McMahon",1982,1988,70],["Justin Fields",2021,2023,62],["Caleb Williams",2024,2025,60]],
     RB: [["Walter Payton",1975,1987,97],["Gale Sayers",1965,1971,86],["Neal Anderson",1986,1993,70],["Matt Forte",2008,2015,78]],
     WR: [["Harlon Hill",1954,1961,72],["Marty Booker",1999,2003,64],["Brandon Marshall",2012,2014,72],["Alshon Jeffery",2012,2016,68],["D.J. Moore",2023,2025,70]],
     TE: [["Mike Ditka",1961,1966,96.1],["Greg Olsen",2007,2010,64],["Cole Kmet",2020,2025,58]],
     F7: [["Dick Butkus",1965,1973,98.7],["Mike Singletary",1981,1992,90],["Richard Dent",1983,1993,88],["Khalil Mack",2018,2021,82]],
     DB: [["Gary Fencik",1976,1987,74],["Mike Brown",2000,2008,66],["Charles Tillman",2003,2014,78],["Eddie Jackson",2017,2022,66]] } },
-  cin: { name: "Bengals", color: "#FB4F14", p: {
+  cin: { name: "Bengals", color: "#FB4F14", color2: "#000000", p: {
     QB: [["Ken Anderson",1971,1986,84],["Boomer Esiason",1984,1997,78],["Carson Palmer",2004,2010,74],["Joe Burrow",2020,2025,85]],
     RB: [["James Brooks",1984,1991,74],["Corey Dillon",1997,2003,76],["Joe Mixon",2017,2023,70]],
     WR: [["Isaac Curtis",1973,1984,74],["Chad Johnson",2001,2010,84],["A.J. Green",2011,2019,84],["Ja'Marr Chase",2021,2025,84]],
     TE: [["Bob Trumpy",1968,1977,72],["Rodney Holman",1982,1992,65],["Tyler Eifert",2013,2019,60]],
     F7: [["Tim Krumrie",1983,1994,72],["Justin Smith",2001,2007,74],["Geno Atkins",2010,2020,90.6],["Trey Hendrickson",2021,2025,78]],
     DB: [["Ken Riley",1969,1983,91.6],["Lemar Parrish",1970,1977,74],["David Fulcher",1986,1992,72],["Jessie Bates III",2018,2022,70]] } },
-  cle: { name: "Browns", color: "#311D00", p: {
+  cle: { name: "Browns", color: "#311D00", color2: "#FF3C00", p: {
     QB: [["Otto Graham",1946,1955,95],["Brian Sipe",1974,1983,74],["Bernie Kosar",1985,1993,70],["Baker Mayfield",2018,2021,62]],
     RB: [["Jim Brown",1957,1965,100],["Leroy Kelly",1964,1973,82],["Kevin Mack",1985,1993,66],["Nick Chubb",2018,2024,78]],
     WR: [["Paul Warfield",1964,1977,86],["Webster Slaughter",1986,1991,66],["Josh Gordon",2012,2014,66],["Jarvis Landry",2018,2021,68],["Amari Cooper",2022,2024,68]],
     TE: [["Ozzie Newsome",1978,1990,96.6],["David Njoku",2017,2025,66]],
     F7: [["Len Ford",1950,1957,82],["Clay Matthews Sr.",1978,1993,80],["Myles Garrett",2017,2025,92]],
     DB: [["Thom Darden",1972,1981,68],["Hanford Dixon",1981,1989,70],["Frank Minnifield",1984,1992,70],["Denzel Ward",2018,2025,74]] } },
-  dal: { name: "Cowboys", color: "#003594", p: {
+  dal: { name: "Cowboys", color: "#003594", color2: "#869397", p: {
     QB: [["Roger Staubach",1969,1979,90],["Troy Aikman",1989,2000,92.2],["Tony Romo",2004,2016,78],["Dak Prescott",2016,2025,82]],
     RB: [["Tony Dorsett",1977,1987,88],["Emmitt Smith",1990,2002,95],["DeMarco Murray",2011,2014,70],["Ezekiel Elliott",2016,2022,78]],
     WR: [["Bob Hayes",1965,1974,82],["Michael Irvin",1988,1999,86],["Dez Bryant",2010,2017,78],["CeeDee Lamb",2020,2025,80]],
     TE: [["Billy Joe DuPree",1973,1983,70],["Jay Novacek",1990,1995,68],["Jason Witten",2003,2017,88]],
     F7: [["Bob Lilly",1961,1974,94],["Randy White",1975,1988,92],["DeMarcus Ware",2005,2013,95.4],["Micah Parsons",2021,2025,85]],
     DB: [["Mel Renfro",1964,1977,86],["Darren Woodson",1992,2003,80],["Deion Sanders",1995,1999,82],["Trevon Diggs",2020,2025,66]] } },
-  den: { name: "Broncos", color: "#FB4F14", p: {
+  den: { name: "Broncos", color: "#FB4F14", color2: "#002244", p: {
     QB: [["Craig Morton",1977,1982,64],["John Elway",1983,1998,94],["Jake Plummer",2003,2006,65],["Peyton Manning",2012,2015,88]],
     RB: [["Floyd Little",1967,1975,76],["Terrell Davis",1995,2001,82],["Clinton Portis",2002,2003,68],["Javonte Williams",2021,2024,58]],
     WR: [["Lionel Taylor",1960,1966,76],["Rod Smith",1995,2006,80],["Demaryius Thomas",2010,2018,80],["Courtland Sutton",2018,2025,66]],
     TE: [["Riley Odoms",1972,1983,72],["Shannon Sharpe",1990,2003,97.7],["Julius Thomas",2011,2014,58]],
     F7: [["Randy Gradishar",1974,1983,84],["Karl Mecklenburg",1983,1994,78],["Elvis Dumervil",2006,2012,74],["Von Miller",2011,2021,92]],
     DB: [["Louis Wright",1975,1986,78],["Steve Atwater",1989,1998,82],["Champ Bailey",2004,2013,88],["Patrick Surtain II",2021,2025,76]] } },
-  det: { name: "Lions", color: "#0076B6", p: {
+  det: { name: "Lions", color: "#0076B6", color2: "#B0B7BC", p: {
     QB: [["Bobby Layne",1950,1958,80],["Erik Kramer",1991,1993,56],["Matthew Stafford",2009,2020,85],["Jared Goff",2021,2025,78]],
     RB: [["Billy Sims",1980,1984,72],["Barry Sanders",1989,1998,99.7],["Kevin Jones",2004,2008,56],["Jahmyr Gibbs",2023,2025,72]],
     WR: [["Herman Moore",1991,2001,78],["Johnnie Morton",1994,2001,62],["Calvin Johnson",2007,2015,98.6],["Amon-Ra St. Brown",2021,2025,80]],
     TE: [["Charlie Sanders",1968,1977,80],["Brandon Pettigrew",2009,2016,56],["Sam LaPorta",2023,2025,66]],
     F7: [["Alex Karras",1958,1970,86],["Chris Spielman",1988,1995,76],["Ndamukong Suh",2010,2014,82],["Aidan Hutchinson",2022,2025,76]],
     DB: [["Yale Lary",1952,1964,82],["Lem Barney",1967,1977,84],["Dick LeBeau",1959,1972,80],["Darius Slay",2013,2019,74]] } },
-  gb: { name: "Packers", color: "#203731", p: {
+  gb: { name: "Packers", color: "#203731", color2: "#FFB612", p: {
     QB: [["Bart Starr",1956,1971,86],["Brett Favre",1992,2007,92],["Aaron Rodgers",2005,2022,98],["Jordan Love",2023,2025,66]],
     RB: [["Jim Taylor",1958,1966,84],["Dorsey Levens",1994,2001,62],["Ahman Green",2000,2009,74],["Aaron Jones",2017,2023,70]],
-    WR: [["Don Hutson",1935,1945,94],["James Lofton",1978,1986,82],["Sterling Sharpe",1988,1994,80],["Donald Driver",1999,2012,74],["Davante Adams",2014,2021,88]],
+    WR: [["Don Hutson",1935,1945,99],["James Lofton",1978,1986,82],["Sterling Sharpe",1988,1994,80],["Donald Driver",1999,2012,74],["Davante Adams",2014,2021,88]],
     TE: [["Paul Coffman",1978,1985,66],["Mark Chmura",1993,1999,58],["Jermichael Finley",2008,2013,60]],
     F7: [["Ray Nitschke",1958,1972,88],["Willie Davis",1960,1969,86],["Reggie White",1993,1998,90],["Clay Matthews III",2009,2018,82]],
     DB: [["Herb Adderley",1961,1969,84],["Willie Wood",1960,1971,84],["LeRoy Butler",1990,2001,80],["Charles Woodson",2006,2012,88],["Jaire Alexander",2018,2024,70]] } },
-  hou: { name: "Texans", color: "#03202F", p: {
+  hou: { name: "Texans", color: "#03202F", color2: "#A71930", p: {
     QB: [["Matt Schaub",2007,2013,68],["Deshaun Watson",2017,2020,76],["C.J. Stroud",2023,2025,72]],
     RB: [["Domanick Williams",2003,2005,58],["Arian Foster",2009,2015,76],["Joe Mixon",2024,2025,60]],
     WR: [["Andre Johnson",2003,2014,88],["DeAndre Hopkins",2013,2019,85],["Nico Collins",2021,2025,68]],
     TE: [["Owen Daniels",2006,2013,66],["Dalton Schultz",2023,2025,56]],
     F7: [["Mario Williams",2006,2011,78],["J.J. Watt",2011,2020,99.2],["Whitney Mercilus",2012,2021,66],["Will Anderson Jr.",2023,2025,70]],
     DB: [["Dunta Robinson",2004,2009,64],["Johnathan Joseph",2011,2016,70],["Derek Stingley Jr.",2022,2025,72]] } },
-  ind: { name: "Colts", color: "#002C5F", p: {
+  ind: { name: "Colts", color: "#002C5F", color2: "#A2AAAD", p: {
     QB: [["Johnny Unitas",1956,1972,94],["Bert Jones",1973,1981,70],["Peyton Manning",1998,2010,98],["Andrew Luck",2012,2018,78]],
     RB: [["Lenny Moore",1956,1967,86],["Eric Dickerson",1987,1991,70],["Marshall Faulk",1994,1998,80],["Edgerrin James",1999,2005,82],["Jonathan Taylor",2021,2025,76]],
     WR: [["Raymond Berry",1955,1967,84],["Marvin Harrison",1996,2008,92],["Reggie Wayne",2001,2014,86],["T.Y. Hilton",2012,2021,74]],
     TE: [["John Mackey",1963,1971,84],["Ken Dilger",1995,2001,58],["Dallas Clark",2003,2011,72]],
     F7: [["Gino Marchetti",1953,1966,90],["Dwight Freeney",2002,2012,86],["Robert Mathis",2003,2016,82],["DeForest Buckner",2020,2025,76]],
     DB: [["Bobby Boyd",1960,1968,76],["Ray Buchanan",1993,1996,58],["Bob Sanders",2004,2010,68],["Kenny Moore II",2017,2025,64]] } },
-  jax: { name: "Jaguars", color: "#006778", p: {
+  jax: { name: "Jaguars", color: "#006778", color2: "#D7A22A", p: {
     QB: [["Mark Brunell",1995,2003,74],["David Garrard",2002,2010,62],["Trevor Lawrence",2021,2025,68]],
     RB: [["Fred Taylor",1998,2008,80],["Maurice Jones-Drew",2006,2013,86.6],["Travis Etienne",2021,2025,62]],
     WR: [["Jimmy Smith",1995,2005,88.1],["Keenan McCardell",1996,2001,70],["Allen Robinson",2014,2017,66],["Brian Thomas Jr.",2024,2025,66]],
     TE: [["Kyle Brady",1999,2006,56],["Marcedes Lewis",2007,2017,62],["Evan Engram",2022,2024,62]],
     F7: [["Tony Brackens",1996,2003,68],["John Henderson",2002,2009,68],["Calais Campbell",2017,2019,74],["Josh Allen",2019,2025,74]],
     DB: [["Donovin Darius",1998,2006,62],["Rashean Mathis",2003,2013,68],["Jalen Ramsey",2016,2019,76]] } },
-  kc: { name: "Chiefs", color: "#E31837", p: {
+  kc: { name: "Chiefs", color: "#E31837", color2: "#FFB81C", p: {
     QB: [["Len Dawson",1962,1975,86],["Trent Green",2001,2006,70],["Alex Smith",2013,2017,66],["Patrick Mahomes",2017,2025,99]],
     RB: [["Ed Podolak",1969,1977,66],["Priest Holmes",2001,2007,80],["Larry Johnson",2003,2009,72],["Jamaal Charles",2008,2016,80],["Isiah Pacheco",2022,2025,58]],
     WR: [["Otis Taylor",1965,1975,78],["Dwayne Bowe",2007,2014,68],["Tyreek Hill",2016,2021,94.6],["Rashee Rice",2023,2025,60]],
     TE: [["Fred Arbanas",1962,1970,70],["Tony Gonzalez",1997,2008,99.4],["Travis Kelce",2013,2025,92]],
     F7: [["Buck Buchanan",1963,1975,86],["Bobby Bell",1963,1974,86],["Willie Lanier",1967,1977,86],["Derrick Thomas",1989,1999,90],["Neil Smith",1988,1996,78],["Chris Jones",2016,2025,84]],
     DB: [["Johnny Robinson",1960,1971,82],["Emmitt Thomas",1966,1978,80],["Eric Berry",2010,2018,74],["Trent McDuffie",2022,2025,68]] } },
-  lac: { name: "Chargers", color: "#0080C6", p: {
+  lac: { name: "Chargers", color: "#0080C6", color2: "#FFC20E", p: {
     QB: [["John Hadl",1962,1972,76],["Dan Fouts",1973,1987,90],["Philip Rivers",2004,2019,88],["Justin Herbert",2020,2025,82]],
     RB: [["Paul Lowe",1960,1968,72],["Natrone Means",1993,1999,58],["LaDainian Tomlinson",2001,2009,92],["Austin Ekeler",2017,2022,68]],
     WR: [["Lance Alworth",1962,1970,98],["Charlie Joiner",1976,1986,78],["Vincent Jackson",2005,2011,70],["Keenan Allen",2013,2023,82]],
     TE: [["Kellen Winslow",1979,1987,88],["Antonio Gates",2003,2018,98.3]],
     F7: [["Leslie O'Neal",1986,1995,78],["Junior Seau",1990,2002,94],["Shawne Merriman",2005,2010,70],["Joey Bosa",2016,2024,78]],
     DB: [["Gill Byrd",1983,1992,72],["Rodney Harrison",1994,2002,76],["Eric Weddle",2007,2015,76],["Derwin James",2018,2025,76]] } },
-  lar: { name: "Rams", color: "#003594", p: {
+  lar: { name: "Rams", color: "#003594", color2: "#FFA300", p: {
     QB: [["Norm Van Brocklin",1949,1957,80],["Roman Gabriel",1962,1972,74],["Kurt Warner",1998,2003,86],["Matthew Stafford",2021,2025,78]],
     RB: [["Eric Dickerson",1983,1987,88],["Marshall Faulk",1999,2005,98.3],["Steven Jackson",2004,2012,78],["Todd Gurley",2015,2019,74]],
     WR: [["Elroy Hirsch",1949,1957,80],["Henry Ellard",1983,1993,76],["Isaac Bruce",1994,2007,86],["Torry Holt",1999,2008,86],["Cooper Kupp",2017,2024,80]],
     TE: [["Bob Klein",1969,1976,54],["Charle Young",1977,1979,56],["Tyler Higbee",2016,2025,60]],
     F7: [["Deacon Jones",1961,1971,94],["Merlin Olsen",1962,1976,92],["Jack Youngblood",1971,1984,88],["Kevin Greene",1985,1992,80],["D'Marco Farr",1994,2000,71],["Aaron Donald",2014,2023,99.6]],
     DB: [["Eddie Meador",1959,1970,76],["Nolan Cromwell",1977,1987,74],["Aeneas Williams",2001,2004,70],["Jalen Ramsey",2019,2022,76]] } },
-  lv: { name: "Raiders", color: "#000000", p: {
+  lv: { name: "Raiders", color: "#000000", color2: "#A5ACAF", p: {
     QB: [["Daryle Lamonica",1967,1974,76],["Ken Stabler",1970,1979,82],["Rich Gannon",1999,2004,98.4],["Derek Carr",2014,2022,70]],
     RB: [["Mark van Eeghen",1974,1981,66],["Marcus Allen",1982,1992,94.7],["Bo Jackson",1987,1990,72],["Josh Jacobs",2019,2023,70]],
     WR: [["Fred Biletnikoff",1965,1978,82],["Cliff Branch",1972,1985,80],["Tim Brown",1988,2003,93.2],["Amari Cooper",2015,2018,66],["Davante Adams",2022,2024,76]],
     TE: [["Dave Casper",1974,1980,80],["Todd Christensen",1979,1988,76],["Darren Waller",2018,2022,66],["Brock Bowers",2024,2025,72]],
     F7: [["Ted Hendricks",1975,1983,86],["Howie Long",1981,1993,86],["Khalil Mack",2014,2017,84],["Maxx Crosby",2019,2025,80]],
     DB: [["Willie Brown",1967,1978,84],["Lester Hayes",1977,1986,80],["Mike Haynes",1983,1989,80],["Charles Woodson",1998,2005,98.5]] } },
-  mia: { name: "Dolphins", color: "#008E97", p: {
+  mia: { name: "Dolphins", color: "#008E97", color2: "#F58220", p: {
     QB: [["Bob Griese",1967,1980,82],["Dan Marino",1983,1999,96],["Ryan Tannehill",2012,2018,64],["Tua Tagovailoa",2020,2025,72]],
     RB: [["Larry Csonka",1968,1979,80],["Mercury Morris",1969,1975,66],["Ricky Williams",2002,2010,74],["De'Von Achane",2023,2025,66]],
     WR: [["Paul Warfield",1970,1974,78],["Mark Clayton",1983,1992,76],["Mark Duper",1982,1992,74],["Jarvis Landry",2014,2017,66],["Tyreek Hill",2022,2025,82]],
     TE: [["Bruce Hardy",1978,1989,54],["Randy McMichael",2002,2006,58],["Mike Gesicki",2018,2022,56]],
     F7: [["Nick Buoniconti",1969,1976,84],["Bill Stanfill",1969,1976,76],["Zach Thomas",1996,2007,84],["Jason Taylor",1997,2011,94.2],["Christian Wilkins",2019,2023,66]],
     DB: [["Dick Anderson",1968,1977,76],["Jake Scott",1970,1975,74],["Sam Madison",1997,2005,72],["Xavien Howard",2016,2023,74]] } },
-  min: { name: "Vikings", color: "#4F2683", p: {
+  min: { name: "Vikings", color: "#4F2683", color2: "#FFC62F", p: {
     QB: [["Fran Tarkenton",1961,1978,90],["Daunte Culpepper",1999,2005,74],["Kirk Cousins",2018,2023,72],["J.J. McCarthy",2024,2025,54]],
     RB: [["Chuck Foreman",1973,1979,76],["Robert Smith",1993,2000,72],["Adrian Peterson",2007,2016,98],["Dalvin Cook",2017,2022,72]],
     WR: [["Anthony Carter",1985,1993,74],["Cris Carter",1990,2001,88],["Randy Moss",1998,2004,94],["Justin Jefferson",2020,2025,88]],
     TE: [["Steve Jordan",1982,1994,72],["Kyle Rudolph",2011,2020,64],["T.J. Hockenson",2022,2025,66]],
     F7: [["Alan Page",1967,1978,92],["Carl Eller",1964,1978,88],["John Randle",1990,2000,86],["Chris Doleman",1985,1993,84],["Jared Allen",2008,2013,82],["Danielle Hunter",2015,2023,76]],
     DB: [["Paul Krause",1968,1979,84],["Bobby Bryant",1968,1980,68],["Antoine Winfield",2004,2012,72],["Harrison Smith",2012,2024,78]] } },
-  ne: { name: "Patriots", color: "#002244", p: {
+  ne: { name: "Patriots", color: "#002244", color2: "#C60C30", p: {
     QB: [["Steve Grogan",1975,1990,72],["Drew Bledsoe",1993,2001,74],["Tom Brady",2000,2019,100],["Drake Maye",2024,2025,62]],
     RB: [["Jim Nance",1965,1971,66],["Sam Cunningham",1973,1982,70],["Curtis Martin",1995,1997,68],["Corey Dillon",2004,2006,66],["Rhamondre Stevenson",2021,2025,58]],
-    WR: [["Stanley Morgan",1977,1989,78],["Troy Brown",1993,2007,66],["Randy Moss",2007,2010,80],["Wes Welker",2007,2012,78],["Julian Edelman",2009,2020,76]],
+    WR: [["Stanley Morgan",1977,1989,78],["Troy Brown",1993,2007,66],["Randy Moss",2007,2010,97.2],["Wes Welker",2007,2012,78],["Julian Edelman",2009,2020,76]],
     TE: [["Russ Francis",1975,1988,74],["Ben Coates",1991,1999,78],["Rob Gronkowski",2010,2018,98.8]],
     F7: [["Andre Tippett",1982,1993,86],["Willie McGinest",1994,2005,76],["Mike Vrabel",2001,2008,72],["Vince Wilfork",2004,2014,78],["Matthew Judon",2021,2024,66]],
     DB: [["Raymond Clayborn",1977,1989,74],["Ty Law",1995,2004,82],["Rodney Harrison",2003,2008,74],["Devin McCourty",2010,2022,90.4],["Stephon Gilmore",2017,2020,76]] } },
-  no: { name: "Saints", color: "#D3BC8D", p: {
+  no: { name: "Saints", color: "#D3BC8D", color2: "#000000", p: {
     QB: [["Archie Manning",1971,1982,74],["Aaron Brooks",2000,2005,62],["Drew Brees",2006,2020,96]],
     RB: [["George Rogers",1981,1984,68],["Deuce McAllister",2001,2008,72],["Mark Ingram",2011,2019,68],["Alvin Kamara",2017,2025,80]],
     WR: [["Eric Martin",1985,1993,72],["Joe Horn",2000,2006,74],["Marques Colston",2006,2015,76],["Michael Thomas",2016,2022,78],["Chris Olave",2022,2025,64]],
     TE: [["Henry Childs",1974,1980,52],["Hoby Brenner",1981,1993,54],["Jimmy Graham",2010,2014,78]],
     F7: [["Rickey Jackson",1981,1993,86],["Pat Swilling",1986,1992,80],["Sam Mills",1986,1994,80],["Cameron Jordan",2011,2024,84]],
     DB: [["Dave Waymer",1980,1989,64],["Sammy Knight",1997,2002,64],["Malcolm Jenkins",2009,2013,66],["Marshon Lattimore",2017,2024,72]] } },
-  nyg: { name: "Giants", color: "#0B2265", p: {
+  nyg: { name: "Giants", color: "#0B2265", color2: "#A71930", p: {
     QB: [["Charlie Conerly",1948,1961,72],["Y.A. Tittle",1961,1964,76],["Phil Simms",1979,1993,78],["Eli Manning",2004,2019,82]],
     RB: [["Frank Gifford",1952,1964,82],["Joe Morris",1982,1988,66],["Rodney Hampton",1990,1997,66],["Tiki Barber",1997,2006,80],["Saquon Barkley",2018,2023,76]],
     WR: [["Homer Jones",1964,1969,72],["Amani Toomer",1996,2008,72],["Plaxico Burress",2005,2008,66],["Odell Beckham Jr.",2014,2018,81.7],["Malik Nabers",2024,2025,66]],
     TE: [["Mark Bavaro",1985,1990,74],["Jeremy Shockey",2002,2007,72],["Evan Engram",2017,2021,62]],
     F7: [["Andy Robustelli",1956,1964,82],["Sam Huff",1956,1963,80],["Lawrence Taylor",1981,1993,100],["Harry Carson",1976,1988,80],["Michael Strahan",1993,2007,90],["Justin Tuck",2005,2013,72]],
     DB: [["Emlen Tunnell",1948,1958,86],["Carl Lockhart",1965,1975,66],["Jason Sehorn",1994,2002,64],["Landon Collins",2015,2018,68]] } },
-  nyj: { name: "Jets", color: "#125740", p: {
+  nyj: { name: "Jets", color: "#125740", color2: "#000000", p: {
     QB: [["Joe Namath",1965,1976,84],["Ken O'Brien",1984,1992,66],["Chad Pennington",2000,2007,66],["Aaron Rodgers",2023,2024,58]],
     RB: [["Emerson Boozer",1966,1975,64],["Freeman McNeil",1981,1992,74],["Curtis Martin",1998,2005,84],["Breece Hall",2022,2025,62]],
     WR: [["Don Maynard",1960,1972,93.8],["Al Toon",1985,1992,72],["Wayne Chrebet",1995,2005,68],["Garrett Wilson",2022,2025,68]],
     TE: [["Mickey Shuler",1978,1989,62],["Dustin Keller",2008,2012,56],["Tyler Conklin",2022,2024,54]],
     F7: [["Joe Klecko",1977,1987,85],["Mark Gastineau",1979,1988,80],["John Abraham",2000,2005,74],["Quinnen Williams",2019,2025,74]],
     DB: [["Bill Baird",1963,1969,64],["Victor Green",1993,2001,60],["Darrelle Revis",2007,2016,98.1],["Sauce Gardner",2022,2025,74]] } },
-  phi: { name: "Eagles", color: "#004C54", p: {
+  phi: { name: "Eagles", color: "#004C54", color2: "#A5ACAF", p: {
     QB: [["Sonny Jurgensen",1957,1963,70],["Randall Cunningham",1985,1995,82],["Donovan McNabb",1999,2009,84],["Jalen Hurts",2020,2025,82]],
     RB: [["Steve Van Buren",1944,1951,84],["Wilbert Montgomery",1977,1984,74],["Brian Westbrook",2002,2009,76],["LeSean McCoy",2009,2014,78],["Saquon Barkley",2024,2025,76]],
     WR: [["Tommy McDonald",1957,1963,78],["Harold Carmichael",1971,1983,82],["DeSean Jackson",2008,2013,70],["A.J. Brown",2022,2025,76]],
     TE: [["Pete Retzlaff",1956,1966,74],["Chad Lewis",1997,2004,58],["Zach Ertz",2013,2020,76],["Dallas Goedert",2018,2025,64]],
-    F7: [["Chuck Bednarik",1949,1962,88],["Reggie White",1985,1992,94],["Bill Bergey",1974,1980,78],["Jerome Brown",1987,1991,70],["Trent Cole",2005,2014,72],["Fletcher Cox",2012,2023,80]],
+    F7: [["Chuck Bednarik",1949,1962,88],["Reggie White",1985,1992,99.8],["Bill Bergey",1974,1980,78],["Jerome Brown",1987,1991,70],["Trent Cole",2005,2014,72],["Fletcher Cox",2012,2023,80]],
     DB: [["Bill Bradley",1969,1976,74],["Eric Allen",1988,1994,76],["Brian Dawkins",1996,2008,88],["Darius Slay",2020,2024,70]] } },
-  pit: { name: "Steelers", color: "#FFB612", p: {
+  pit: { name: "Steelers", color: "#FFB612", color2: "#000000", p: {
     QB: [["Terry Bradshaw",1970,1983,84],["Kordell Stewart",1995,2002,62],["Ben Roethlisberger",2004,2021,88]],
     RB: [["John Henry Johnson",1960,1965,70],["Franco Harris",1972,1983,84],["Jerome Bettis",1996,2005,82],["Le'Veon Bell",2013,2017,76],["Najee Harris",2021,2024,60]],
-    WR: [["Lynn Swann",1974,1982,76],["John Stallworth",1974,1987,80],["Hines Ward",1998,2011,82],["Antonio Brown",2010,2018,88]],
+    WR: [["Lynn Swann",1974,1982,76],["John Stallworth",1974,1987,80],["Hines Ward",1998,2011,82],["Antonio Brown",2010,2018,97]],
     TE: [["Elbie Nickel",1947,1957,68],["Eric Green",1990,1994,64],["Heath Miller",2005,2015,74],["Pat Freiermuth",2021,2025,58]],
     F7: [["Ernie Stautner",1950,1963,84],["Joe Greene",1969,1981,96],["Jack Ham",1971,1982,90],["Jack Lambert",1974,1984,90],["Greg Lloyd",1988,1997,74],["James Harrison",2004,2017,80],["Cam Heyward",2011,2025,80],["T.J. Watt",2017,2025,88]],
     DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,90],["Troy Polamalu",2003,2014,88],["Minkah Fitzpatrick",2019,2024,74]] } },
-  sea: { name: "Seahawks", color: "#002244", p: {
+  sea: { name: "Seahawks", color: "#002244", color2: "#69BE28", p: {
     QB: [["Dave Krieg",1980,1991,74],["Matt Hasselbeck",2001,2010,72],["Russell Wilson",2012,2021,88],["Geno Smith",2022,2024,66]],
     RB: [["Curt Warner",1983,1989,72],["Shaun Alexander",2000,2007,76],["Marshawn Lynch",2010,2019,80],["Kenneth Walker III",2022,2025,62]],
     WR: [["Steve Largent",1976,1989,97.7],["Brian Blades",1988,1998,66],["Doug Baldwin",2011,2018,72],["Tyler Lockett",2015,2024,68],["DK Metcalf",2019,2024,74]],
     TE: [["Mike Tice",1981,1988,50],["Itula Mili",1997,2005,50],["Jimmy Graham",2015,2017,62],["Noah Fant",2022,2025,54]],
     F7: [["Jacob Green",1980,1991,76],["Cortez Kennedy",1990,2000,84],["Chad Brown",1997,2004,66],["Bobby Wagner",2012,2025,86],["Michael Bennett",2013,2017,72]],
     DB: [["Dave Brown",1976,1986,70],["Kenny Easley",1981,1987,82],["Earl Thomas",2010,2018,86],["Richard Sherman",2011,2017,84],["Kam Chancellor",2010,2017,76]] } },
-  sf: { name: "49ers", color: "#AA0000", p: {
+  sf: { name: "49ers", color: "#AA0000", color2: "#B3995D", p: {
     QB: [["Y.A. Tittle",1951,1960,76],["Joe Montana",1979,1992,98.5],["Steve Young",1987,1999,92],["Jeff Garcia",1999,2003,68],["Brock Purdy",2022,2025,70]],
     RB: [["Joe Perry",1948,1963,84],["Hugh McElhenny",1952,1960,78],["Roger Craig",1983,1990,78],["Ricky Watters",1992,1994,66],["Frank Gore",2005,2014,84],["Christian McCaffrey",2022,2025,80]],
     WR: [["Dwight Clark",1979,1987,72],["Jerry Rice",1985,2000,100],["John Taylor",1987,1995,70],["Terrell Owens",1996,2003,86],["Deebo Samuel",2019,2024,72]],
     TE: [["Ted Kwalick",1969,1974,66],["Brent Jones",1987,1997,72],["Vernon Davis",2006,2015,74],["George Kittle",2017,2025,86]],
     F7: [["Dave Wilcox",1964,1974,82],["Fred Dean",1981,1985,74],["Charles Haley",1986,1991,78],["Bryant Young",1994,2007,82],["Patrick Willis",2007,2014,86],["Justin Smith",2008,2014,80],["Nick Bosa",2019,2025,84]],
     DB: [["Jimmy Johnson",1961,1976,84],["Ronnie Lott",1981,1990,94],["Eric Wright",1981,1990,68],["Merton Hanks",1991,1998,68],["Charvarius Ward",2022,2024,64]] } },
-  tb: { name: "Buccaneers", color: "#D50A0A", p: {
+  tb: { name: "Buccaneers", color: "#D50A0A", color2: "#FF7900", p: {
     QB: [["Doug Williams",1978,1982,66],["Brad Johnson",2001,2004,62],["Jameis Winston",2015,2019,64],["Tom Brady",2020,2022,84],["Baker Mayfield",2023,2025,70]],
     RB: [["James Wilder",1981,1989,70],["Mike Alstott",1996,2006,68],["Warrick Dunn",1997,2001,68],["Doug Martin",2012,2017,64],["Rachaad White",2022,2025,56]],
     WR: [["Mark Carrier",1987,1992,66],["Keyshawn Johnson",2000,2003,66],["Mike Evans",2014,2025,88],["Chris Godwin",2017,2025,70]],
     TE: [["Jimmie Giles",1978,1986,70],["Rob Gronkowski",2020,2021,62],["Cade Otton",2022,2025,54]],
     F7: [["Lee Roy Selmon",1976,1984,88],["Hardy Nickerson",1993,1999,72],["Warren Sapp",1995,2003,90],["Derrick Brooks",1995,2008,90],["Simeon Rice",2001,2006,78],["Vita Vea",2018,2025,70]],
     DB: [["Cedric Brown",1977,1984,56],["John Lynch",1993,2003,80],["Ronde Barber",1997,2012,84],["Antoine Winfield Jr.",2020,2025,74]] } },
-  ten: { name: "Titans / Oilers", color: "#4B92DB", p: {
+  ten: { name: "Titans / Oilers", color: "#4B92DB", color2: "#0C2340", p: {
     QB: [["George Blanda",1960,1966,74],["Dan Pastorini",1971,1979,66],["Warren Moon",1984,1993,86],["Steve McNair",1995,2005,82.8],["Ryan Tannehill",2019,2023,66]],
     RB: [["Earl Campbell",1978,1984,86],["Eddie George",1996,2003,78],["Chris Johnson",2008,2013,74],["Derrick Henry",2016,2023,86]],
     WR: [["Charley Hennigan",1960,1966,76],["Drew Hill",1985,1991,70],["Ernest Givins",1986,1994,70],["Derrick Mason",1997,2004,74],["A.J. Brown",2019,2021,70]],
     TE: [["Frank Wycheck",1995,2003,68],["Delanie Walker",2013,2018,70],["Jared Cook",2009,2012,56]],
     F7: [["Elvin Bethea",1968,1983,75.4],["Robert Brazile",1975,1984,82],["Ray Childress",1985,1995,78],["Jevon Kearse",1999,2003,74],["Jurrell Casey",2011,2019,76],["Harold Landry",2018,2025,64]],
     DB: [["Ken Houston",1967,1972,84],["Blaine Bishop",1993,2001,66],["Samari Rolle",1998,2004,66],["Kevin Byard",2016,2022,88.6]] } },
-  was: { name: "Commanders", color: "#5A1414", p: {
+  was: { name: "Commanders", color: "#5A1414", color2: "#FFB612", p: {
     QB: [["Sammy Baugh",1937,1952,97],["Sonny Jurgensen",1964,1974,82],["Joe Theismann",1974,1985,78],["Kirk Cousins",2012,2017,68],["Jayden Daniels",2024,2025,72]],
     RB: [["Larry Brown",1969,1976,74],["John Riggins",1976,1985,78],["Stephen Davis",1996,2002,66],["Clinton Portis",2004,2010,72],["Brian Robinson Jr.",2022,2025,54]],
     WR: [["Charley Taylor",1964,1977,84],["Art Monk",1980,1993,84],["Gary Clark",1985,1992,76],["Santana Moss",2005,2014,66],["Terry McLaurin",2019,2025,72]],
@@ -346,6 +346,7 @@ function TeamPicker({ title, exclude = [], selected, onPick, onClose }) {
                         >
                           <div className="disp" style={{ fontSize: 16 }}>{t.toUpperCase()}</div>
                           <div className="mono" style={{ fontSize: 8, opacity: .8, marginTop: 1 }}>{TEAMS[t].name}</div>
+                          <span className="accent" style={{ background: TEAMS[t].color2 }} />
                         </button>
                       );
                     })}
@@ -378,6 +379,50 @@ export default function WarRoom() {
   const [exportOpen, setExportOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState("idle"); // idle | copied | failed
   const [draftForm, setDraftForm] = useState({ pool: "QB", name: "", start: "", end: "" });
+
+  // --- PWA install prompt ---------------------------------------------------
+  const [installEvent, setInstallEvent] = useState(null);   // captured beforeinstallprompt
+  const [isStandalone, setIsStandalone] = useState(false);  // already installed/running as an app
+  const [isIOSSafari, setIsIOSSafari] = useState(false);    // no beforeinstallprompt on iOS — show instructions instead
+  const [installDismissed, setInstallDismissed] = useState(true); // starts hidden until we've checked storage
+
+  useEffect(() => {
+    setIsStandalone(
+      window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true
+    );
+    const ua = window.navigator.userAgent;
+    setIsIOSSafari(/iPad|iPhone|iPod/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua));
+
+    (async () => {
+      try {
+        const d = await window.storage.get("wr:installDismissed");
+        setInstallDismissed(d?.value === "1");
+      } catch (e) { setInstallDismissed(false); }
+    })();
+
+    function onBeforeInstall(e) { e.preventDefault(); setInstallEvent(e); }
+    function onInstalled() { setInstallEvent(null); setIsStandalone(true); }
+    window.addEventListener("beforeinstallprompt", onBeforeInstall);
+    window.addEventListener("appinstalled", onInstalled);
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onBeforeInstall);
+      window.removeEventListener("appinstalled", onInstalled);
+    };
+  }, []);
+
+  function dismissInstall() {
+    setInstallDismissed(true);
+    window.storage.set("wr:installDismissed", "1").catch(() => {});
+  }
+
+  async function promptInstall() {
+    if (!installEvent) return;
+    installEvent.prompt();
+    await installEvent.userChoice;
+    setInstallEvent(null);
+  }
+
+  const showInstallBanner = !isStandalone && !installDismissed && (installEvent || isIOSSafari);
 
   useEffect(() => {
     if (!pickerOpen && !dealtPickerOpen) return;
@@ -597,7 +642,7 @@ export default function WarRoom() {
   const css = `
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
 .wr{ background:#26332F; min-height:100vh; color:#F4F1E8;
-  font-family:'IBM Plex Sans',system-ui,sans-serif; padding:14px 12px 40px; }
+  font-family:'IBM Plex Sans',system-ui,sans-serif; padding:20px 18px 44px; }
 .wr *{ box-sizing:border-box; }
 .disp{ font-family:'Barlow Condensed','Arial Narrow',sans-serif; font-weight:800;
   text-transform:uppercase; letter-spacing:.04em; line-height:.95; }
@@ -651,14 +696,16 @@ export default function WarRoom() {
 .confgrid{ display:grid; grid-template-columns:1fr 1fr; gap:0 14px; }
 .confcol{ min-width:0; }
 .teamgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
-.teambadge{ border:2px solid transparent; border-radius:4px; padding:8px 4px; cursor:pointer;
-  text-align:center; line-height:1.1; transition:transform .1s, border-color .15s; }
+.teambadge{ border:2px solid transparent; border-radius:4px; padding:8px 4px 10px; cursor:pointer;
+  text-align:center; line-height:1.1; transition:transform .1s, border-color .15s;
+  position:relative; overflow:hidden; }
 .teambadge:hover{ border-color:#F4F1E8; }
 .teambadge:active{ transform:scale(.96); }
 .teambadge:focus-visible{ outline:2px solid #F4F1E8; outline-offset:2px; }
 .teambadge.active{ border-color:#C8342B; }
 .teambadge:disabled{ opacity:.28; cursor:not-allowed; }
 .teambadge:disabled:hover{ border-color:transparent; }
+.teambadge .accent{ position:absolute; left:0; right:0; bottom:0; height:3px; }
 .pickerbtn{ width:100%; background:#26332F; color:#F4F1E8; border:1px solid #47665D; border-radius:3px;
   padding:10px; font-family:'IBM Plex Sans',sans-serif; font-size:16px; text-align:left;
   cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px; }
@@ -678,6 +725,12 @@ export default function WarRoom() {
 .modalclose:hover{ border-color:#5C8479; }
 .logobtn{ background:none; border:none; padding:0; cursor:pointer; display:block; }
 .logobtn:focus-visible{ outline:2px solid #F4F1E8; outline-offset:2px; }
+.installbar{ background:#30453F; border:1px solid #C8912F; border-radius:4px; padding:12px 14px;
+  margin-bottom:12px; display:flex; align-items:center; gap:12px; }
+.installbar .msg{ flex:1; min-width:0; font-size:13px; line-height:1.4; }
+.installbar .close{ background:none; border:none; color:#859993; cursor:pointer; font-size:17px;
+  line-height:1; padding:4px; flex-shrink:0; }
+.installbar .close:hover{ color:#F4F1E8; }
 .exportbox{ width:100%; height:240px; background:#1B2620; color:#F4F1E8; border:1px solid #47665D;
   border-radius:3px; padding:10px; font-family:'IBM Plex Mono',monospace; font-size:12px;
   line-height:1.5; resize:vertical; }
@@ -693,7 +746,27 @@ export default function WarRoom() {
       <div className="wr">
         <style>{css}</style>
         <div className="eyebrow">Quick Play</div>
-        <img src={logo} alt="War Room" style={{ height: 84, display: "block", margin: "14px 0 28px" }} />
+        <img src={logo} alt="War Room" style={{ width: 383, maxWidth: "100%", height: "auto", display: "block", margin: "14px 0 28px" }} />
+
+        {showInstallBanner && (
+          <div className="installbar">
+            <div className="msg">
+              {installEvent ? (
+                <>Install this as an app for quick access on your home screen.</>
+              ) : (
+                <>Add to your home screen: tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.</>
+              )}
+            </div>
+            {installEvent && (
+              <button type="button" className="btn" style={{ width: "auto", padding: "8px 14px", flexShrink: 0 }}
+                onClick={promptInstall}>
+                Install
+              </button>
+            )}
+            <button type="button" className="close" onClick={dismissInstall} aria-label="Dismiss">✕</button>
+          </div>
+        )}
+
         <div className="panel">
           <div className="eyebrow" style={{ marginBottom: 8 }}>Round 1 · your franchise</div>
           <button type="button" className="pickerbtn" onClick={() => setPickerOpen(true)}>
@@ -768,7 +841,7 @@ export default function WarRoom() {
           <button type="button" className="logobtn" onClick={() => {
             if (window.confirm("Start a new board? This clears your current progress.")) reset();
           }}>
-            <img src={logo} alt="War Room · start a new board" style={{ height: 40, display: "block", margin: "4px 0 0" }} />
+            <img src={logo} alt="War Room · start a new board" style={{ width: 183, maxWidth: "100%", height: "auto", display: "block", margin: "4px 0 0" }} />
           </button>
         </div>
         <div style={{ textAlign: "right" }}>
