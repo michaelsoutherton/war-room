@@ -1079,7 +1079,7 @@ export default function WarRoom() {
         <div className="panel" style={{ marginTop: 12, borderColor: "#4E9E9A" }}>
           <div className="eyebrow" style={{ color: "#4E9E9A" }}>Roster complete</div>
           <div className="disp" style={{ fontSize: 34, margin: "4px 0" }}>
-            {Object.values(board).reduce((a, b) => a + b.rating, 0)}
+            {Math.round(Object.values(board).reduce((a, b) => a + b.rating, 0) * 10) / 10}
           </div>
           <div style={{ fontSize: 13, color: "#859993" }}>
             Estimated roster strength. Tell me the score the game actually gave you and
