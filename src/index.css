@@ -6,10 +6,11 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
   background: #26332f;
   min-height: 100vh;
+  overscroll-behavior-y: none;
 }
 
 #root {
