@@ -83,7 +83,7 @@ const TEAMS = {
   dal: { name: "Cowboys", color: "#003594", color2: "#869397", p: {
     QB: [["Roger Staubach",1969,1979,90],["Troy Aikman",1989,2000,92.2],["Tony Romo",2004,2016,78],["Dak Prescott",2016,2025,82]],
     RB: [["Tony Dorsett",1977,1987,88],["Emmitt Smith",1990,2002,95],["DeMarco Murray",2011,2014,70],["Ezekiel Elliott",2016,2022,78]],
-    WR: [["Bob Hayes",1965,1974,82],["Michael Irvin",1988,1999,86],["Dez Bryant",2010,2017,78],["CeeDee Lamb",2020,2025,80]],
+    WR: [["Bob Hayes",1965,1974,82],["Michael Irvin",1988,1999,97.3],["Dez Bryant",2010,2017,78],["CeeDee Lamb",2020,2025,80]],
     TE: [["Billy Joe DuPree",1973,1983,70],["Jay Novacek",1990,1995,68],["Jason Witten",2003,2017,88]],
     F7: [["Bob Lilly",1961,1974,94],["Randy White",1975,1988,92],["DeMarcus Ware",2005,2013,95.4],["Micah Parsons",2021,2025,85]],
     DB: [["Mel Renfro",1964,1977,86],["Darren Woodson",1992,2003,80],["Deion Sanders",1995,1999,82],["Trevon Diggs",2020,2025,66]] } },
@@ -151,7 +151,7 @@ const TEAMS = {
     F7: [["Deacon Jones",1961,1971,94],["Merlin Olsen",1962,1976,92],["Jack Youngblood",1971,1984,88],["Kevin Greene",1985,1992,80],["D'Marco Farr",1994,2000,71],["Aaron Donald",2014,2023,99.6]],
     DB: [["Eddie Meador",1959,1970,76],["Nolan Cromwell",1977,1987,74],["Aeneas Williams",2001,2004,70],["Jalen Ramsey",2019,2022,76]] } },
   lv: { name: "Raiders", color: "#000000", color2: "#A5ACAF", p: {
-    QB: [["Daryle Lamonica",1967,1974,76],["Ken Stabler",1970,1979,82],["Rich Gannon",1999,2004,98.4],["Derek Carr",2014,2022,70]],
+    QB: [["Daryle Lamonica",1967,1974,76],["Ken Stabler",1970,1979,82],["Rich Gannon",1999,2004,78.4],["Derek Carr",2014,2022,70]],
     RB: [["Mark van Eeghen",1974,1981,66],["Marcus Allen",1982,1992,94.7],["Bo Jackson",1987,1990,72],["Josh Jacobs",2019,2023,70]],
     WR: [["Fred Biletnikoff",1965,1978,82],["Cliff Branch",1972,1985,80],["Tim Brown",1988,2003,93.2],["Amari Cooper",2015,2018,66],["Davante Adams",2022,2024,76]],
     TE: [["Dave Casper",1974,1980,80],["Todd Christensen",1979,1988,76],["Darren Waller",2018,2022,66],["Brock Bowers",2024,2025,72]],
@@ -233,13 +233,13 @@ const TEAMS = {
     WR: [["Mark Carrier",1987,1992,66],["Keyshawn Johnson",2000,2003,66],["Mike Evans",2014,2025,88],["Chris Godwin",2017,2025,70]],
     TE: [["Jimmie Giles",1978,1986,70],["Rob Gronkowski",2020,2021,62],["Cade Otton",2022,2025,54]],
     F7: [["Lee Roy Selmon",1976,1984,88],["Hardy Nickerson",1993,1999,72],["Warren Sapp",1995,2003,90],["Derrick Brooks",1995,2008,90],["Simeon Rice",2001,2006,78],["Vita Vea",2018,2025,70]],
-    DB: [["Cedric Brown",1977,1984,56],["John Lynch",1993,2003,80],["Ronde Barber",1997,2012,84],["Antoine Winfield Jr.",2020,2025,74]] } },
+    DB: [["Cedric Brown",1977,1984,56],["John Lynch",1993,2003,80],["Ronde Barber",1997,2012,95.4],["Antoine Winfield Jr.",2020,2025,74]] } },
   ten: { name: "Titans / Oilers", color: "#4B92DB", color2: "#0C2340", p: {
     QB: [["George Blanda",1960,1966,74],["Dan Pastorini",1971,1979,66],["Warren Moon",1984,1993,86],["Steve McNair",1995,2005,82.8],["Ryan Tannehill",2019,2023,66]],
     RB: [["Earl Campbell",1978,1984,86],["Eddie George",1996,2003,78],["Chris Johnson",2008,2013,74],["Derrick Henry",2016,2023,86]],
     WR: [["Charley Hennigan",1960,1966,76],["Drew Hill",1985,1991,70],["Ernest Givins",1986,1994,70],["Derrick Mason",1997,2004,74],["A.J. Brown",2019,2021,70]],
     TE: [["Frank Wycheck",1995,2003,68],["Delanie Walker",2013,2018,70],["Jared Cook",2009,2012,56]],
-    F7: [["Elvin Bethea",1968,1983,75.4],["Robert Brazile",1975,1984,82],["Ray Childress",1985,1995,78],["Jevon Kearse",1999,2003,74],["Jurrell Casey",2011,2019,76],["Harold Landry",2018,2025,64]],
+    F7: [["Elvin Bethea",1968,1983,75.4],["Robert Brazile",1975,1984,84.2],["Ray Childress",1985,1995,78],["Jevon Kearse",1999,2003,74],["Jurrell Casey",2011,2019,76],["Harold Landry",2018,2025,64]],
     DB: [["Ken Houston",1967,1972,84],["Blaine Bishop",1993,2001,66],["Samari Rolle",1998,2004,66],["Kevin Byard",2016,2022,88.6]] } },
   was: { name: "Commanders", color: "#5A1414", color2: "#FFB612", p: {
     QB: [["Sammy Baugh",1937,1952,97],["Sonny Jurgensen",1964,1974,82],["Joe Theismann",1974,1985,78],["Kirk Cousins",2012,2017,68],["Jayden Daniels",2024,2025,72]],
