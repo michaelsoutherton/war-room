@@ -462,8 +462,7 @@ export default function WarRoom() {
         return;
       }
       pullCommitted.current = true;
-      setRefreshing(true);
-      forceRefresh();
+      startRefresh();
     }
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
@@ -519,6 +518,16 @@ export default function WarRoom() {
       await Promise.all((keys || []).map(k => caches.delete(k)));
     } catch (e) { /* no Cache Storage support */ }
     window.location.reload();
+  }
+
+  function startRefresh() {
+    setRefreshing(true);
+    forceRefresh();
+  }
+
+  function onVersionClick() {
+    if (started && !window.confirm("Refresh now? This clears your current progress.")) return;
+    startRefresh();
   }
 
   const pkey = (team, name) => `${team}|${name}`;
@@ -805,6 +814,10 @@ export default function WarRoom() {
 .pullbar{ position:fixed; top:0; left:0; right:0; height:70px; z-index:60;
   display:flex; align-items:flex-end; justify-content:center; padding-bottom:10px;
   color:#859993; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+.versionftr{ display:block; width:100%; background:none; border:none; cursor:pointer;
+  color:#47665D; font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.04em;
+  text-align:center; margin-top:18px; padding:4px; }
+.versionftr:hover{ color:#859993; }
 .exportbox{ width:100%; height:240px; background:#1B2620; color:#F4F1E8; border:1px solid #47665D;
   border-radius:3px; padding:10px; font-family:'IBM Plex Mono',monospace; font-size:12px;
   line-height:1.5; resize:vertical; }
@@ -904,6 +917,9 @@ export default function WarRoom() {
           Ratings are estimates modeled on era-adjusted Approximate Value, not the game's
           real numbers. Log your actual results and they can be corrected.
         </p>
+        <button type="button" className="versionftr" onClick={onVersionClick}>
+          v{__APP_VERSION__} · tap to refresh
+        </button>
         </div>
       </>
     );
@@ -1296,6 +1312,9 @@ export default function WarRoom() {
           style={{ opacity: usedTeams.length ? 1 : .35 }}>Undo pick</button>
         <button className="btn ghost" onClick={reset}>New board</button>
       </div>
+      <button type="button" className="versionftr" onClick={onVersionClick}>
+        v{__APP_VERSION__} · tap to refresh
+      </button>
       </div>
     </>
   );
