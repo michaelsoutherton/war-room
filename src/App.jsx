@@ -95,11 +95,11 @@ const TEAMS = {
     F7: [["Randy Gradishar",1974,1983,84],["Karl Mecklenburg",1983,1994,78],["Elvis Dumervil",2006,2012,74],["Von Miller",2011,2021,92]],
     DB: [["Louis Wright",1975,1986,78],["Steve Atwater",1989,1998,82],["Champ Bailey",2004,2013,88],["Patrick Surtain II",2021,2025,76]] } },
   det: { name: "Lions", color: "#0076B6", color2: "#B0B7BC", p: {
-    QB: [["Bobby Layne",1950,1958,80],["Erik Kramer",1991,1993,56],["Matthew Stafford",2009,2020,85],["Jared Goff",2021,2025,78],["Joey Harrington",2002,2005,60]],
-    RB: [["Billy Sims",1980,1984,72],["Barry Sanders",1989,1998,99.7],["Kevin Jones",2004,2008,56],["Jahmyr Gibbs",2023,2025,72]],
-    WR: [["Herman Moore",1991,2001,78],["Johnnie Morton",1994,2001,62],["Calvin Johnson",2007,2015,98.6],["Amon-Ra St. Brown",2021,2025,80]],
-    TE: [["Charlie Sanders",1968,1977,80],["Brandon Pettigrew",2009,2016,56],["Sam LaPorta",2023,2025,66],["David Sloan",1995,1999,62]],
-    F7: [["Alex Karras",1958,1970,86],["Chris Spielman",1988,1995,76],["Ndamukong Suh",2010,2014,82],["Aidan Hutchinson",2022,2025,76],["Robert Porcher",1995,2003,76]],
+    QB: [["Bobby Layne",1950,1958,80],["Erik Kramer",1991,1993,56],["Matthew Stafford",2009,2020,85],["Jared Goff",2021,2025,78],["Joey Harrington",2002,2005,60],["Greg Landry",1968,1978,68],["Scott Mitchell",1994,1998,62]],
+    RB: [["Billy Sims",1980,1984,72],["Barry Sanders",1989,1998,99.7],["Kevin Jones",2004,2008,56],["Jahmyr Gibbs",2023,2025,72],["Doak Walker",1950,1955,82],["Mel Farr",1967,1973,68]],
+    WR: [["Herman Moore",1991,2001,78],["Johnnie Morton",1994,2001,62],["Calvin Johnson",2007,2015,98.6],["Amon-Ra St. Brown",2021,2025,80],["Gail Cogdill",1960,1968,72],["Golden Tate",2014,2018,74]],
+    TE: [["Charlie Sanders",1968,1977,80],["Brandon Pettigrew",2009,2016,56],["Sam LaPorta",2023,2025,66],["David Sloan",1995,1999,62],["T.J. Hockenson",2019,2022,76]],
+    F7: [["Alex Karras",1958,1970,86],["Chris Spielman",1988,1995,76],["Ndamukong Suh",2010,2014,82],["Aidan Hutchinson",2022,2025,76],["Robert Porcher",1995,2003,76],["Doug English",1975,1985,78],["Ezekiel Ansah",2013,2018,74]],
     DB: [["Yale Lary",1952,1964,82],["Night Train Lane",1960,1965,98.8],["Lem Barney",1967,1977,84],["Dick LeBeau",1959,1972,80],["Darius Slay",2013,2019,74],["Dre' Bly",2003,2007,76]] } },
   gb: { name: "Packers", color: "#203731", color2: "#FFB612", p: {
     QB: [["Bart Starr",1956,1971,86],["Brett Favre",1992,2007,92],["Aaron Rodgers",2005,2022,98],["Jordan Love",2023,2025,66]],
