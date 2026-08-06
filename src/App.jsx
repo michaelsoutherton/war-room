@@ -27,14 +27,14 @@ const TEAMS = {
   ari: { name: "Cardinals", color: "#97233F", color2: "#000000", p: {
     QB: [["Jim Hart",1966,1983,72],["Kurt Warner",2005,2009,88],["Kyler Murray",2019,2025,75]],
     RB: [["Ottis Anderson",1979,1986,76],["Edgerrin James",2006,2008,70],["David Johnson",2015,2019,71]],
-    WR: [["Roy Green",1979,1990,76],["Anquan Boldin",2003,2009,82],["Larry Fitzgerald",2004,2020,95]],
+    WR: [["Roy Green",1979,1990,76],["Anquan Boldin",2003,2009,82],["Larry Fitzgerald",2004,2020,98.3]],
     TE: [["Jackie Smith",1963,1977,82],["Freddie Jones",2002,2004,56],["Zach Ertz",2021,2023,70]],
     F7: [["Eric Swann",1991,1999,72],["Simeon Rice",1996,2000,78],["Calais Campbell",2008,2016,89.3],["Chandler Jones",2016,2021,84]],
     DB: [["Larry Wilson",1960,1972,96.3],["Aeneas Williams",1991,2000,85],["Patrick Peterson",2011,2020,84],["Budda Baker",2017,2025,78]] } },
   atl: { name: "Falcons", color: "#A71930", color2: "#000000", p: {
     QB: [["Steve Bartkowski",1975,1985,74],["Michael Vick",2001,2006,80],["Matt Ryan",2008,2021,89]],
     RB: [["Gerald Riggs",1982,1988,72],["Warrick Dunn",2002,2007,75],["Devonta Freeman",2014,2019,70],["Bijan Robinson",2023,2025,72]],
-    WR: [["Andre Rison",1990,1994,74],["Roddy White",2005,2015,83],["Julio Jones",2011,2020,96.7],["Drake London",2022,2025,68]],
+    WR: [["Andre Rison",1990,1994,74],["Roddy White",2005,2015,88.5],["Julio Jones",2011,2020,96.7],["Drake London",2022,2025,68]],
     TE: [["Jim Mitchell",1969,1979,68],["Alge Crumpler",2001,2007,74],["Tony Gonzalez",2009,2013,94.3],["Kyle Pitts",2021,2025,62]],
     F7: [["Claude Humphrey",1968,1978,88],["John Abraham",2006,2012,82],["Grady Jarrett",2015,2024,76]],
     DB: [["Rolland Lawrence",1973,1980,72],["Deion Sanders",1989,1993,90],["Ray Buchanan",1997,2003,74],["A.J. Terrell",2020,2025,68]] } },
@@ -61,7 +61,7 @@ const TEAMS = {
     DB: [["Mike Minter",1997,2006,70],["Chris Gamble",2004,2012,66],["Josh Norman",2012,2015,68],["Jaycee Horn",2021,2025,68]] } },
   chi: { name: "Bears", color: "#0B162A", color2: "#C83803", p: {
     QB: [["Sid Luckman",1939,1950,94],["Jim McMahon",1982,1988,70],["Justin Fields",2021,2023,62],["Caleb Williams",2024,2025,60]],
-    RB: [["Walter Payton",1975,1987,97],["Gale Sayers",1965,1971,86],["Neal Anderson",1986,1993,70],["Matt Forte",2008,2015,78]],
+    RB: [["Walter Payton",1975,1987,99.3],["Gale Sayers",1965,1971,86],["Neal Anderson",1986,1993,70],["Matt Forte",2008,2015,78]],
     WR: [["Harlon Hill",1954,1961,72],["Marty Booker",1999,2003,64],["Brandon Marshall",2012,2014,72],["Alshon Jeffery",2012,2016,68],["D.J. Moore",2023,2025,70]],
     TE: [["Mike Ditka",1961,1966,96.1],["Greg Olsen",2007,2010,64],["Cole Kmet",2020,2025,58]],
     F7: [["Dick Butkus",1965,1973,98.7],["Mike Singletary",1981,1992,90],["Richard Dent",1983,1993,88],["Khalil Mack",2018,2021,82]],
@@ -90,7 +90,7 @@ const TEAMS = {
   den: { name: "Broncos", color: "#FB4F14", color2: "#002244", p: {
     QB: [["Craig Morton",1977,1982,64],["John Elway",1983,1998,94],["Jake Plummer",2003,2006,65],["Peyton Manning",2012,2015,88]],
     RB: [["Floyd Little",1967,1975,76],["Terrell Davis",1995,2001,82],["Clinton Portis",2002,2003,68],["Javonte Williams",2021,2024,58]],
-    WR: [["Lionel Taylor",1960,1966,76],["Rod Smith",1995,2006,80],["Demaryius Thomas",2010,2018,80],["Courtland Sutton",2018,2025,66]],
+    WR: [["Lionel Taylor",1960,1966,76],["Rod Smith",1995,2006,80],["Demaryius Thomas",2010,2018,83.1],["Courtland Sutton",2018,2025,66]],
     TE: [["Riley Odoms",1972,1983,72],["Shannon Sharpe",1990,2003,97.7],["Julius Thomas",2011,2014,58]],
     F7: [["Randy Gradishar",1974,1983,84],["Karl Mecklenburg",1983,1994,78],["Elvis Dumervil",2006,2012,74],["Von Miller",2011,2021,92]],
     DB: [["Louis Wright",1975,1986,78],["Steve Atwater",1989,1998,82],["Champ Bailey",2004,2013,88],["Patrick Surtain II",2021,2025,76]] } },
@@ -100,13 +100,13 @@ const TEAMS = {
     WR: [["Herman Moore",1991,2001,78],["Johnnie Morton",1994,2001,62],["Calvin Johnson",2007,2015,98.6],["Amon-Ra St. Brown",2021,2025,80]],
     TE: [["Charlie Sanders",1968,1977,80],["Brandon Pettigrew",2009,2016,56],["Sam LaPorta",2023,2025,66]],
     F7: [["Alex Karras",1958,1970,86],["Chris Spielman",1988,1995,76],["Ndamukong Suh",2010,2014,82],["Aidan Hutchinson",2022,2025,76]],
-    DB: [["Yale Lary",1952,1964,82],["Lem Barney",1967,1977,84],["Dick LeBeau",1959,1972,80],["Darius Slay",2013,2019,74]] } },
+    DB: [["Yale Lary",1952,1964,82],["Night Train Lane",1960,1965,98.8],["Lem Barney",1967,1977,84],["Dick LeBeau",1959,1972,80],["Darius Slay",2013,2019,74]] } },
   gb: { name: "Packers", color: "#203731", color2: "#FFB612", p: {
     QB: [["Bart Starr",1956,1971,86],["Brett Favre",1992,2007,92],["Aaron Rodgers",2005,2022,98],["Jordan Love",2023,2025,66]],
     RB: [["Jim Taylor",1958,1966,84],["Dorsey Levens",1994,2001,62],["Ahman Green",2000,2009,74],["Aaron Jones",2017,2023,70]],
     WR: [["Don Hutson",1935,1945,99],["James Lofton",1978,1986,82],["Sterling Sharpe",1988,1994,80],["Donald Driver",1999,2012,74],["Davante Adams",2014,2021,88]],
     TE: [["Paul Coffman",1978,1985,66],["Mark Chmura",1993,1999,58],["Jermichael Finley",2008,2013,60]],
-    F7: [["Ray Nitschke",1958,1972,88],["Willie Davis",1960,1969,86],["Reggie White",1993,1998,90],["Clay Matthews III",2009,2018,82]],
+    F7: [["Ray Nitschke",1958,1972,93.8],["Willie Davis",1960,1969,86],["Reggie White",1993,1998,90],["Clay Matthews III",2009,2018,82]],
     DB: [["Herb Adderley",1961,1969,84],["Willie Wood",1960,1971,84],["LeRoy Butler",1990,2001,80],["Charles Woodson",2006,2012,88],["Jaire Alexander",2018,2024,70]] } },
   hou: { name: "Texans", color: "#03202F", color2: "#A71930", p: {
     QB: [["Matt Schaub",2007,2013,68],["Deshaun Watson",2017,2020,76],["C.J. Stroud",2023,2025,72]],
@@ -176,7 +176,7 @@ const TEAMS = {
     RB: [["Jim Nance",1965,1971,66],["Sam Cunningham",1973,1982,70],["Curtis Martin",1995,1997,68],["Corey Dillon",2004,2006,66],["Rhamondre Stevenson",2021,2025,58]],
     WR: [["Stanley Morgan",1977,1989,78],["Troy Brown",1993,2007,66],["Randy Moss",2007,2010,97.2],["Wes Welker",2007,2012,78],["Julian Edelman",2009,2020,76]],
     TE: [["Russ Francis",1975,1988,74],["Ben Coates",1991,1999,78],["Rob Gronkowski",2010,2018,98.8]],
-    F7: [["Andre Tippett",1982,1993,86],["Willie McGinest",1994,2005,76],["Mike Vrabel",2001,2008,72],["Vince Wilfork",2004,2014,78],["Matthew Judon",2021,2024,66]],
+    F7: [["Andre Tippett",1982,1993,86],["Willie McGinest",1994,2005,76],["Mike Vrabel",2001,2008,72],["Vince Wilfork",2004,2014,86],["Matthew Judon",2021,2024,66]],
     DB: [["Raymond Clayborn",1977,1989,74],["Ty Law",1995,2004,82],["Rodney Harrison",2003,2008,74],["Devin McCourty",2010,2022,90.4],["Stephon Gilmore",2017,2020,76]] } },
   no: { name: "Saints", color: "#D3BC8D", color2: "#000000", p: {
     QB: [["Archie Manning",1971,1982,74],["Aaron Brooks",2000,2005,62],["Drew Brees",2006,2020,96]],
@@ -189,11 +189,11 @@ const TEAMS = {
     QB: [["Charlie Conerly",1948,1961,72],["Y.A. Tittle",1961,1964,76],["Phil Simms",1979,1993,78],["Eli Manning",2004,2019,82]],
     RB: [["Frank Gifford",1952,1964,82],["Joe Morris",1982,1988,66],["Rodney Hampton",1990,1997,66],["Tiki Barber",1997,2006,80],["Saquon Barkley",2018,2023,76]],
     WR: [["Homer Jones",1964,1969,72],["Amani Toomer",1996,2008,72],["Plaxico Burress",2005,2008,66],["Odell Beckham Jr.",2014,2018,81.7],["Malik Nabers",2024,2025,66]],
-    TE: [["Mark Bavaro",1985,1990,74],["Jeremy Shockey",2002,2007,72],["Evan Engram",2017,2021,62]],
+    TE: [["Mark Bavaro",1985,1990,74],["Jeremy Shockey",2002,2007,90.5],["Evan Engram",2017,2021,62]],
     F7: [["Andy Robustelli",1956,1964,82],["Sam Huff",1956,1963,80],["Lawrence Taylor",1981,1993,100],["Harry Carson",1976,1988,80],["Michael Strahan",1993,2007,90],["Justin Tuck",2005,2013,72]],
     DB: [["Emlen Tunnell",1948,1958,86],["Carl Lockhart",1965,1975,66],["Jason Sehorn",1994,2002,64],["Landon Collins",2015,2018,68]] } },
   nyj: { name: "Jets", color: "#125740", color2: "#000000", p: {
-    QB: [["Joe Namath",1965,1976,84],["Ken O'Brien",1984,1992,66],["Chad Pennington",2000,2007,66],["Aaron Rodgers",2023,2024,58]],
+    QB: [["Joe Namath",1965,1976,86.9],["Ken O'Brien",1984,1992,66],["Chad Pennington",2000,2007,66],["Aaron Rodgers",2023,2024,58]],
     RB: [["Emerson Boozer",1966,1975,64],["Freeman McNeil",1981,1992,74],["Curtis Martin",1998,2005,84],["Breece Hall",2022,2025,62]],
     WR: [["Don Maynard",1960,1972,93.8],["Al Toon",1985,1992,72],["Wayne Chrebet",1995,2005,68],["Garrett Wilson",2022,2025,68]],
     TE: [["Mickey Shuler",1978,1989,62],["Dustin Keller",2008,2012,56],["Tyler Conklin",2022,2024,54]],
@@ -218,7 +218,7 @@ const TEAMS = {
     RB: [["Curt Warner",1983,1989,72],["Shaun Alexander",2000,2007,76],["Marshawn Lynch",2010,2019,80],["Kenneth Walker III",2022,2025,62]],
     WR: [["Steve Largent",1976,1989,97.7],["Brian Blades",1988,1998,66],["Doug Baldwin",2011,2018,72],["Tyler Lockett",2015,2024,68],["DK Metcalf",2019,2024,74]],
     TE: [["Mike Tice",1981,1988,50],["Itula Mili",1997,2005,50],["Jimmy Graham",2015,2017,62],["Noah Fant",2022,2025,54]],
-    F7: [["Jacob Green",1980,1991,76],["Cortez Kennedy",1990,2000,84],["Chad Brown",1997,2004,66],["Bobby Wagner",2012,2025,86],["Michael Bennett",2013,2017,72]],
+    F7: [["Jacob Green",1980,1991,76],["Cortez Kennedy",1990,2000,84],["Chad Brown",1997,2004,66],["Bobby Wagner",2012,2025,95.7],["Michael Bennett",2013,2017,72]],
     DB: [["Dave Brown",1976,1986,70],["Kenny Easley",1981,1987,82],["Earl Thomas",2010,2018,86],["Richard Sherman",2011,2017,84],["Kam Chancellor",2010,2017,76]] } },
   sf: { name: "49ers", color: "#AA0000", color2: "#B3995D", p: {
     QB: [["Y.A. Tittle",1951,1960,76],["Joe Montana",1979,1992,98.5],["Steve Young",1987,1999,92],["Jeff Garcia",1999,2003,68],["Brock Purdy",2022,2025,70]],
@@ -236,7 +236,7 @@ const TEAMS = {
     DB: [["Cedric Brown",1977,1984,56],["John Lynch",1993,2003,80],["Ronde Barber",1997,2012,95.4],["Antoine Winfield Jr.",2020,2025,74]] } },
   ten: { name: "Titans / Oilers", color: "#4B92DB", color2: "#0C2340", p: {
     QB: [["George Blanda",1960,1966,74],["Dan Pastorini",1971,1979,66],["Warren Moon",1984,1993,86],["Steve McNair",1995,2005,82.8],["Ryan Tannehill",2019,2023,66]],
-    RB: [["Earl Campbell",1978,1984,86],["Eddie George",1996,2003,78],["Chris Johnson",2008,2013,74],["Derrick Henry",2016,2023,86]],
+    RB: [["Earl Campbell",1978,1984,96.8],["Eddie George",1996,2003,78],["Chris Johnson",2008,2013,74],["Derrick Henry",2016,2023,86]],
     WR: [["Charley Hennigan",1960,1966,76],["Drew Hill",1985,1991,70],["Ernest Givins",1986,1994,70],["Derrick Mason",1997,2004,74],["A.J. Brown",2019,2021,70]],
     TE: [["Frank Wycheck",1995,2003,68],["Delanie Walker",2013,2018,70],["Jared Cook",2009,2012,56]],
     F7: [["Elvin Bethea",1968,1983,75.4],["Robert Brazile",1975,1984,84.2],["Ray Childress",1985,1995,78],["Jevon Kearse",1999,2003,74],["Jurrell Casey",2011,2019,76],["Harold Landry",2018,2025,64]],
