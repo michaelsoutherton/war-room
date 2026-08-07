@@ -57,7 +57,7 @@ const TEAMS = {
     RB: [["DeAngelo Williams",2006,2014,72],["Jonathan Stewart",2008,2017,68],["Christian McCaffrey",2017,2022,82]],
     WR: [["Muhsin Muhammad",1996,2004,76],["Steve Smith Sr.",2001,2013,88],["D.J. Moore",2018,2022,72]],
     TE: [["Wesley Walls",1996,2002,74],["Greg Olsen",2011,2019,80]],
-    F7: [["Julius Peppers",2002,2009,95.2],["Kris Jenkins",2001,2007,76],["Luke Kuechly",2012,2019,86],["Thomas Davis",2005,2018,76]],
+    F7: [["Julius Peppers",2002,2009,95.2],["Kris Jenkins",2001,2007,76],["Luke Kuechly",2012,2019,95.5],["Thomas Davis",2005,2018,76]],
     DB: [["Mike Minter",1997,2006,70],["Chris Gamble",2004,2012,66],["Josh Norman",2012,2015,68],["Jaycee Horn",2021,2025,68]] } },
   chi: { name: "Bears", color: "#0B162A", color2: "#C83803", p: {
     QB: [["Sid Luckman",1939,1950,94],["Jim McMahon",1982,1988,70],["Justin Fields",2021,2023,62],["Caleb Williams",2024,2025,60],["Rex Grossman",2003,2008,68]],
@@ -81,7 +81,7 @@ const TEAMS = {
     F7: [["Len Ford",1950,1957,82],["Clay Matthews Sr.",1978,1993,80],["Myles Garrett",2017,2025,92],["Kamerion Wimbley",2006,2009,70]],
     DB: [["Thom Darden",1972,1981,68],["Hanford Dixon",1981,1989,70],["Frank Minnifield",1984,1992,70],["Denzel Ward",2018,2025,74],["Daylon McCutcheon",1999,2005,64]] } },
   dal: { name: "Cowboys", color: "#003594", color2: "#869397", p: {
-    QB: [["Roger Staubach",1969,1979,90],["Troy Aikman",1989,2000,92.2],["Tony Romo",2004,2016,78],["Dak Prescott",2016,2025,82]],
+    QB: [["Roger Staubach",1969,1979,93.8],["Troy Aikman",1989,2000,92.2],["Tony Romo",2004,2016,78],["Dak Prescott",2016,2025,82]],
     RB: [["Tony Dorsett",1977,1987,88],["Emmitt Smith",1990,2002,95],["DeMarco Murray",2011,2014,70],["Ezekiel Elliott",2016,2022,78]],
     WR: [["Bob Hayes",1965,1974,82],["Michael Irvin",1988,1999,97.3],["Dez Bryant",2010,2017,78],["CeeDee Lamb",2020,2025,80]],
     TE: [["Billy Joe DuPree",1973,1983,70],["Jay Novacek",1990,1995,68],["Jason Witten",2003,2017,88]],
@@ -131,7 +131,7 @@ const TEAMS = {
     DB: [["Donovin Darius",1998,2006,62],["Rashean Mathis",2003,2013,68],["Jalen Ramsey",2016,2019,76]] } },
   kc: { name: "Chiefs", color: "#E31837", color2: "#FFB81C", p: {
     QB: [["Len Dawson",1962,1975,86],["Trent Green",2001,2006,70],["Alex Smith",2013,2017,66],["Patrick Mahomes",2017,2025,99]],
-    RB: [["Ed Podolak",1969,1977,66],["Priest Holmes",2001,2007,80],["Larry Johnson",2003,2009,72],["Jamaal Charles",2008,2016,80],["Isiah Pacheco",2022,2025,58]],
+    RB: [["Ed Podolak",1969,1977,66],["Priest Holmes",2001,2007,95.3],["Larry Johnson",2003,2009,72],["Jamaal Charles",2008,2016,80],["Isiah Pacheco",2022,2025,58]],
     WR: [["Otis Taylor",1965,1975,78],["Dwayne Bowe",2007,2014,68],["Tyreek Hill",2016,2021,94.6],["Rashee Rice",2023,2025,60]],
     TE: [["Fred Arbanas",1962,1970,70],["Tony Gonzalez",1997,2008,99.4],["Travis Kelce",2013,2025,92]],
     F7: [["Buck Buchanan",1963,1975,86],["Bobby Bell",1963,1974,86],["Willie Lanier",1967,1977,86],["Derrick Thomas",1989,1999,90],["Neil Smith",1988,1996,78],["Chris Jones",2016,2025,92.9]],
