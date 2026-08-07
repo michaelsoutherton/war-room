@@ -167,7 +167,7 @@ const TEAMS = {
   min: { name: "Vikings", color: "#4F2683", color2: "#FFC62F", p: {
     QB: [["Fran Tarkenton",1961,1978,90],["Daunte Culpepper",1999,2005,74],["Kirk Cousins",2018,2023,72],["J.J. McCarthy",2024,2025,54]],
     RB: [["Chuck Foreman",1973,1979,76],["Robert Smith",1993,2000,72],["Adrian Peterson",2007,2016,98],["Dalvin Cook",2017,2022,72]],
-    WR: [["Anthony Carter",1985,1993,74],["Cris Carter",1990,2001,88],["Randy Moss",1998,2004,94],["Justin Jefferson",2020,2025,88]],
+    WR: [["Anthony Carter",1985,1993,74],["Cris Carter",1990,2001,88],["Randy Moss",1998,2004,99.7],["Justin Jefferson",2020,2025,88]],
     TE: [["Steve Jordan",1982,1994,72],["Kyle Rudolph",2011,2020,64],["T.J. Hockenson",2022,2025,66],["Jim Kleinsasser",1999,2010,62]],
     F7: [["Alan Page",1967,1978,92],["Carl Eller",1964,1978,88],["John Randle",1990,2000,86],["Chris Doleman",1985,1993,84],["Jared Allen",2008,2013,82],["Danielle Hunter",2015,2023,76]],
     DB: [["Paul Krause",1968,1979,84],["Bobby Bryant",1968,1980,68],["Antoine Winfield",2004,2012,72],["Harrison Smith",2012,2024,78]] } },
@@ -215,7 +215,7 @@ const TEAMS = {
     DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,99.8],["Troy Polamalu",2003,2014,97.8],["Minkah Fitzpatrick",2019,2024,74]] } },
   sea: { name: "Seahawks", color: "#002244", color2: "#69BE28", p: {
     QB: [["Dave Krieg",1980,1991,74],["Matt Hasselbeck",2001,2010,72],["Russell Wilson",2012,2021,88],["Geno Smith",2022,2024,66]],
-    RB: [["Curt Warner",1983,1989,72],["Shaun Alexander",2000,2007,76],["Marshawn Lynch",2010,2019,80],["Kenneth Walker III",2022,2025,62]],
+    RB: [["Curt Warner",1983,1989,72],["Shaun Alexander",2000,2007,93.6],["Marshawn Lynch",2010,2019,80],["Kenneth Walker III",2022,2025,62]],
     WR: [["Steve Largent",1976,1989,97.7],["Brian Blades",1988,1998,66],["Doug Baldwin",2011,2018,72],["Tyler Lockett",2015,2024,68],["DK Metcalf",2019,2024,74]],
     TE: [["Mike Tice",1981,1988,50],["Itula Mili",1997,2005,50],["Jimmy Graham",2015,2017,62],["Noah Fant",2022,2025,54]],
     F7: [["Jacob Green",1980,1991,76],["Cortez Kennedy",1990,2000,84],["Chad Brown",1997,2004,66],["Bobby Wagner",2012,2025,95.7],["Michael Bennett",2013,2017,72]],
@@ -232,7 +232,7 @@ const TEAMS = {
     RB: [["James Wilder",1981,1989,70],["Mike Alstott",1996,2006,68],["Warrick Dunn",1997,2001,68],["Doug Martin",2012,2017,64],["Rachaad White",2022,2025,56]],
     WR: [["Mark Carrier",1987,1992,66],["Keyshawn Johnson",2000,2003,66],["Mike Evans",2014,2025,88],["Chris Godwin",2017,2025,70]],
     TE: [["Jimmie Giles",1978,1986,70],["Rob Gronkowski",2020,2021,62],["Cade Otton",2022,2025,54],["Dave Moore",1992,2001,58]],
-    F7: [["Lee Roy Selmon",1976,1984,88],["Hardy Nickerson",1993,1999,72],["Warren Sapp",1995,2003,90],["Derrick Brooks",1995,2008,90],["Simeon Rice",2001,2006,78],["Vita Vea",2018,2025,70]],
+    F7: [["Lee Roy Selmon",1976,1984,88],["Hardy Nickerson",1993,1999,72],["Warren Sapp",1995,2003,90],["Derrick Brooks",1995,2008,96.5],["Simeon Rice",2001,2006,78],["Vita Vea",2018,2025,70]],
     DB: [["Cedric Brown",1977,1984,56],["John Lynch",1993,2003,80],["Ronde Barber",1997,2012,95.4],["Antoine Winfield Jr.",2020,2025,74]] } },
   ten: { name: "Titans / Oilers", color: "#4B92DB", color2: "#0C2340", p: {
     QB: [["George Blanda",1960,1966,74],["Dan Pastorini",1971,1979,66],["Warren Moon",1984,1993,86],["Steve McNair",1995,2005,82.8],["Ryan Tannehill",2019,2023,66]],
