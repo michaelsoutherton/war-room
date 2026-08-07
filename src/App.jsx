@@ -133,7 +133,7 @@ const TEAMS = {
     QB: [["Len Dawson",1962,1975,86],["Trent Green",2001,2006,70],["Alex Smith",2013,2017,66],["Patrick Mahomes",2017,2025,99]],
     RB: [["Ed Podolak",1969,1977,66],["Priest Holmes",2001,2007,95.3],["Larry Johnson",2003,2009,72],["Jamaal Charles",2008,2016,80],["Isiah Pacheco",2022,2025,58]],
     WR: [["Otis Taylor",1965,1975,78],["Dwayne Bowe",2007,2014,68],["Tyreek Hill",2016,2021,94.6],["Rashee Rice",2023,2025,60]],
-    TE: [["Fred Arbanas",1962,1970,70],["Tony Gonzalez",1997,2008,99.4],["Travis Kelce",2013,2025,92]],
+    TE: [["Fred Arbanas",1962,1970,70],["Tony Gonzalez",1997,2008,99.4],["Travis Kelce",2013,2025,100]],
     F7: [["Buck Buchanan",1963,1975,86],["Bobby Bell",1963,1974,86],["Willie Lanier",1967,1977,86],["Derrick Thomas",1989,1999,90],["Neil Smith",1988,1996,78],["Chris Jones",2016,2025,92.9]],
     DB: [["Johnny Robinson",1960,1971,82],["Emmitt Thomas",1966,1978,80],["Eric Berry",2010,2018,74],["Trent McDuffie",2022,2025,68],["Dale Carter",1992,1999,78]] } },
   lac: { name: "Chargers", color: "#0080C6", color2: "#FFC20E", p: {
