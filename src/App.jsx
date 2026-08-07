@@ -86,7 +86,7 @@ const TEAMS = {
     WR: [["Bob Hayes",1965,1974,82],["Michael Irvin",1988,1999,97.3],["Dez Bryant",2010,2017,78],["CeeDee Lamb",2020,2025,80]],
     TE: [["Billy Joe DuPree",1973,1983,70],["Jay Novacek",1990,1995,68],["Jason Witten",2003,2017,88]],
     F7: [["Bob Lilly",1961,1974,94],["Randy White",1975,1988,92],["DeMarcus Ware",2005,2013,95.4],["Micah Parsons",2021,2025,85]],
-    DB: [["Mel Renfro",1964,1977,86],["Darren Woodson",1992,2003,80],["Deion Sanders",1995,1999,82],["Trevon Diggs",2020,2025,66]] } },
+    DB: [["Mel Renfro",1964,1977,86],["Darren Woodson",1992,2003,80],["Deion Sanders",1995,1999,100],["Trevon Diggs",2020,2025,66]] } },
   den: { name: "Broncos", color: "#FB4F14", color2: "#002244", p: {
     QB: [["Craig Morton",1977,1982,64],["John Elway",1983,1998,94],["Jake Plummer",2003,2006,65],["Peyton Manning",2012,2015,88]],
     RB: [["Floyd Little",1967,1975,76],["Terrell Davis",1995,2001,82],["Clinton Portis",2002,2003,68],["Javonte Williams",2021,2024,58]],
@@ -116,7 +116,7 @@ const TEAMS = {
     F7: [["Mario Williams",2006,2011,78],["J.J. Watt",2011,2020,99.2],["Whitney Mercilus",2012,2021,66],["Will Anderson Jr.",2023,2025,70]],
     DB: [["Dunta Robinson",2004,2009,64],["Johnathan Joseph",2011,2016,70],["Derek Stingley Jr.",2022,2025,72]] } },
   ind: { name: "Colts", color: "#002C5F", color2: "#A2AAAD", p: {
-    QB: [["Johnny Unitas",1956,1972,94],["Bert Jones",1973,1981,70],["Peyton Manning",1998,2010,98],["Andrew Luck",2012,2018,78]],
+    QB: [["Johnny Unitas",1956,1972,94],["Bert Jones",1973,1981,70],["Peyton Manning",1998,2010,99.5],["Andrew Luck",2012,2018,78]],
     RB: [["Lenny Moore",1956,1967,86],["Eric Dickerson",1987,1991,70],["Marshall Faulk",1994,1998,80],["Edgerrin James",1999,2005,82],["Jonathan Taylor",2021,2025,76]],
     WR: [["Raymond Berry",1955,1967,84],["Marvin Harrison",1996,2008,92],["Reggie Wayne",2001,2014,86],["T.Y. Hilton",2012,2021,74]],
     TE: [["John Mackey",1963,1971,84],["Ken Dilger",1995,2001,58],["Dallas Clark",2003,2011,72]],
@@ -182,7 +182,7 @@ const TEAMS = {
     QB: [["Archie Manning",1971,1982,74],["Aaron Brooks",2000,2005,62],["Drew Brees",2006,2020,96]],
     RB: [["George Rogers",1981,1984,68],["Deuce McAllister",2001,2008,72],["Mark Ingram",2011,2019,68],["Alvin Kamara",2017,2025,80]],
     WR: [["Eric Martin",1985,1993,72],["Joe Horn",2000,2006,74],["Marques Colston",2006,2015,76],["Michael Thomas",2016,2022,78],["Chris Olave",2022,2025,64]],
-    TE: [["Henry Childs",1974,1980,52],["Hoby Brenner",1981,1993,54],["Jimmy Graham",2010,2014,78],["Cameron Cleeland",1998,2001,56]],
+    TE: [["Henry Childs",1974,1980,52],["Hoby Brenner",1981,1993,54],["Jimmy Graham",2010,2014,92.2],["Cameron Cleeland",1998,2001,56]],
     F7: [["Rickey Jackson",1981,1993,86],["Pat Swilling",1986,1992,80],["Sam Mills",1986,1994,80],["Cameron Jordan",2011,2024,84],["Will Smith",2004,2012,82]],
     DB: [["Dave Waymer",1980,1989,64],["Sammy Knight",1997,2002,64],["Malcolm Jenkins",2009,2013,66],["Marshon Lattimore",2017,2024,72]] } },
   nyg: { name: "Giants", color: "#0B2265", color2: "#A71930", p: {
@@ -211,7 +211,7 @@ const TEAMS = {
     RB: [["John Henry Johnson",1960,1965,70],["Franco Harris",1972,1983,84],["Jerome Bettis",1996,2005,82],["Le'Veon Bell",2013,2017,76],["Najee Harris",2021,2024,60]],
     WR: [["Lynn Swann",1974,1982,76],["John Stallworth",1974,1987,80],["Hines Ward",1998,2011,82],["Antonio Brown",2010,2018,97]],
     TE: [["Elbie Nickel",1947,1957,68],["Eric Green",1990,1994,64],["Heath Miller",2005,2015,74],["Pat Freiermuth",2021,2025,58]],
-    F7: [["Ernie Stautner",1950,1963,84],["Joe Greene",1969,1981,96],["Jack Ham",1971,1982,90],["Jack Lambert",1974,1984,90],["Greg Lloyd",1988,1997,74],["James Harrison",2004,2017,80],["Cam Heyward",2011,2025,80],["T.J. Watt",2017,2025,88]],
+    F7: [["Ernie Stautner",1950,1963,84],["Joe Greene",1969,1981,99.1],["Jack Ham",1971,1982,90],["Jack Lambert",1974,1984,90],["Greg Lloyd",1988,1997,74],["James Harrison",2004,2017,80],["Cam Heyward",2011,2025,80],["T.J. Watt",2017,2025,88]],
     DB: [["Jack Butler",1951,1959,78],["Mel Blount",1970,1983,88],["Donnie Shell",1974,1987,80],["Rod Woodson",1987,1996,99.8],["Troy Polamalu",2003,2014,97.8],["Minkah Fitzpatrick",2019,2024,74]] } },
   sea: { name: "Seahawks", color: "#002244", color2: "#69BE28", p: {
     QB: [["Dave Krieg",1980,1991,74],["Matt Hasselbeck",2001,2010,72],["Russell Wilson",2012,2021,88],["Geno Smith",2022,2024,66]],
