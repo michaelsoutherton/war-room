@@ -146,7 +146,7 @@ const TEAMS = {
   lar: { name: "Rams", color: "#003594", color2: "#FFA300", p: {
     QB: [["Norm Van Brocklin",1949,1957,80],["Roman Gabriel",1962,1972,74],["Kurt Warner",1998,2003,86],["Matthew Stafford",2021,2025,78]],
     RB: [["Eric Dickerson",1983,1987,88],["Marshall Faulk",1999,2005,98.3],["Steven Jackson",2004,2012,78],["Todd Gurley",2015,2019,74]],
-    WR: [["Elroy Hirsch",1949,1957,80],["Henry Ellard",1983,1993,76],["Isaac Bruce",1994,2007,86],["Torry Holt",1999,2008,86],["Cooper Kupp",2017,2024,80]],
+    WR: [["Elroy Hirsch",1949,1957,80],["Henry Ellard",1983,1993,76],["Isaac Bruce",1994,2007,86],["Torry Holt",1999,2008,95.2],["Cooper Kupp",2017,2024,80]],
     TE: [["Bob Klein",1969,1976,54],["Charle Young",1977,1979,56],["Tyler Higbee",2016,2025,60],["Roland Williams",1997,2001,58]],
     F7: [["Deacon Jones",1961,1971,94],["Merlin Olsen",1962,1976,92],["Jack Youngblood",1971,1984,88],["Kevin Greene",1985,1992,80],["D'Marco Farr",1994,2000,71],["Aaron Donald",2014,2023,99.6]],
     DB: [["Eddie Meador",1959,1970,76],["Nolan Cromwell",1977,1987,74],["Aeneas Williams",2001,2004,70],["Jalen Ramsey",2019,2022,76]] } },
@@ -154,7 +154,7 @@ const TEAMS = {
     QB: [["Daryle Lamonica",1967,1974,76],["Ken Stabler",1970,1979,82],["Rich Gannon",1999,2004,78.4],["Derek Carr",2014,2022,70]],
     RB: [["Mark van Eeghen",1974,1981,66],["Marcus Allen",1982,1992,94.7],["Bo Jackson",1987,1990,72],["Josh Jacobs",2019,2023,70],["Napoleon Kaufman",1995,2000,70]],
     WR: [["Fred Biletnikoff",1965,1978,82],["Cliff Branch",1972,1985,80],["Tim Brown",1988,2003,93.2],["Amari Cooper",2015,2018,66],["Davante Adams",2022,2024,76]],
-    TE: [["Dave Casper",1974,1980,80],["Todd Christensen",1979,1988,76],["Darren Waller",2018,2022,66],["Brock Bowers",2024,2025,72],["Roland Williams",2002,2004,54]],
+    TE: [["Dave Casper",1974,1980,94.6],["Todd Christensen",1979,1988,76],["Darren Waller",2018,2022,66],["Brock Bowers",2024,2025,72],["Roland Williams",2002,2004,54]],
     F7: [["Ted Hendricks",1975,1983,86],["Howie Long",1981,1993,86],["Khalil Mack",2014,2017,84],["Maxx Crosby",2019,2025,80],["Rod Coleman",2000,2007,68]],
     DB: [["Willie Brown",1967,1978,84],["Lester Hayes",1977,1986,80],["Mike Haynes",1983,1989,80],["Charles Woodson",1998,2005,98.5],["Johnathan Abram",2019,2022,62]] } },
   mia: { name: "Dolphins", color: "#008E97", color2: "#F58220", p: {
@@ -201,7 +201,7 @@ const TEAMS = {
     DB: [["Bill Baird",1963,1969,64],["Victor Green",1993,2001,60],["Darrelle Revis",2007,2016,98.1],["Sauce Gardner",2022,2025,74]] } },
   phi: { name: "Eagles", color: "#004C54", color2: "#A5ACAF", p: {
     QB: [["Sonny Jurgensen",1957,1963,70],["Randall Cunningham",1985,1995,82],["Donovan McNabb",1999,2009,84],["Jalen Hurts",2020,2025,82]],
-    RB: [["Steve Van Buren",1944,1951,84],["Wilbert Montgomery",1977,1984,74],["Brian Westbrook",2002,2009,76],["LeSean McCoy",2009,2014,78],["Saquon Barkley",2024,2025,76]],
+    RB: [["Steve Van Buren",1944,1951,84],["Wilbert Montgomery",1977,1984,74],["Brian Westbrook",2002,2009,76],["LeSean McCoy",2009,2014,78],["Saquon Barkley",2024,2025,92.2]],
     WR: [["Tommy McDonald",1957,1963,78],["Harold Carmichael",1971,1983,82],["DeSean Jackson",2008,2013,70],["A.J. Brown",2022,2025,76]],
     TE: [["Pete Retzlaff",1956,1966,74],["Chad Lewis",1997,2004,58],["Zach Ertz",2013,2020,76],["Dallas Goedert",2018,2025,64]],
     F7: [["Chuck Bednarik",1949,1962,88],["Reggie White",1985,1992,99.8],["Bill Bergey",1974,1980,78],["Jerome Brown",1987,1991,70],["Trent Cole",2005,2014,72],["Fletcher Cox",2012,2023,80]],
